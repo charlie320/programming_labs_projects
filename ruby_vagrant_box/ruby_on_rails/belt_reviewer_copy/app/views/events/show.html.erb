@@ -1,0 +1,54 @@
+<a href="/events">Events Dashboard</a>
+<h2><%= @event.name %></h2>
+<table>
+  <tr>
+    <td>Host:</td>
+    <td><%= "#{@event.user.first_name} #{@event.user.last_name}" %></td>
+  </tr>
+  <tr>
+    <td>Date:</td>
+    <td><%= @event.date.strftime('%B %d, %Y') %></td>
+  </tr>
+  <tr>
+    <td>Location:</td>
+    <td><%= @event.city %></td>
+    <td><%= @event.state %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>People who are joining the event:</th>
+    <td><%= @event_count %></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>State</th>
+  </tr>
+  <% @attenders.each do |attender| %>
+    <tr>
+      <td>  <%= "#{attender.first_name} #{attender.last_name}" %></td>
+      <td>  <%= attender.city %></td>
+      <td>  <%= attender.state %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Discussion about this event</h3>
+<textarea name="attenders" rows="8" cols="40" readonly>
+  <% @comments.each do |comment| %>
+  <%= comment.user.first_name %> says,
+  <%= comment.content %>
+
+  <% end %>
+</textarea>
+
+<form class="" action='/events/<%= @event.id %>/comments' method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h4>Add Comment:</h4>
+  <textarea name="discussion[content]" rows="8" cols="40" ></textarea>
+  <input type="submit" name="join" value="Submit Comment">
+</form>

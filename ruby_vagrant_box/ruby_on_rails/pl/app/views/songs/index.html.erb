@@ -1,0 +1,39 @@
+<h3>This is the Song index page!</h3>
+<h2><%= "Hello, #{@user.first_name} #{@user.last_name}!" %></h2>
+<h4><a href=<%= users_show_path(current_user) %>>My Profile</a></h4>
+
+<h4>All the songs in our hub:</h4>
+
+<table>
+  <tr>
+    <th>Artist</th>
+    <th>Title</th>
+    <th>Number of Times Song Has Been Added</th>
+    <th>Add to Playlist</th>
+  </tr>
+  <% @all_songs.each do |song| %>
+    <tr>
+      <td><%= song.author %></td>
+      <td><%=link_to song.title, songs_show_path(song.id)%></td>
+      <td><%=song.users.count%></td>
+      <td><%= link_to "Add", user_playlists_create_path(song.id), :method => :post %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <form class="add_song" action='songs' method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <tr>
+      <td><label for="">Title</label></td>
+      <td><input type="text" name="new_song[title]" value=""></td>
+    </tr>
+    <tr>
+      <td><label for="">Artist</label></td>
+      <td><input type="text" name="new_song[author]" value=""></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="add_song" value="Add Song"></td>
+    </tr>
+  </form>
+</table>

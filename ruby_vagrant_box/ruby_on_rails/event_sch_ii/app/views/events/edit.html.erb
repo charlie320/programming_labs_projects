@@ -1,0 +1,27 @@
+<h1>Edit Events</h1>
+<table>
+    <form class="add_event" action="/events/<%=params[:id]%>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <tr>
+      <th>Name:</th>
+      <td><input type="text" name="new_event[name]" value="<%=@event.name%>"></td>
+    </tr>
+    <th>Date:</th>
+    <td><input type="date" name="new_event[date]" value="<%=@event.date%>"></td>
+    <tr>
+      <th>Location:</th>
+      <td><input type="text" name="new_event[city]" value="<%=@event.city%>"></td>
+      <td>
+        <select class="" name="register[state]">
+          <% IO.foreach('states.txt') do |line| %>
+            <option value="<%= line.strip %>"><%=line%></option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="submit" value="Update Event"></td>
+    </tr>
+  </form>
+</table>

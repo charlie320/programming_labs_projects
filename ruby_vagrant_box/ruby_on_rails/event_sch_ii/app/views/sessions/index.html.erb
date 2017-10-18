@@ -1,0 +1,68 @@
+<h1>Welcome!</h1>
+
+<div class="registration">
+  <h2>Register</h2>
+  <table class="registration">
+    <form class="registration" action= "users" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <tr>
+        <td><label for="">First Name:</label></td>
+        <td><input type="text" name="register[first_name]" value=""></td>
+      </tr>
+      <tr>
+        <td><label for="">Last Name:</label></td>
+        <td><input type="text" name="register[last_name]" value=""></td>
+      </tr>
+      <tr>
+        <td><label for="">Email:</label></td>
+        <td><input type="text" name="register[email]" value=""></td>
+      </tr>
+    </tr>
+      <td><label for="">Location:</label></td>
+      <td><input type="text" name="register[city]" value=""></td>
+      <td>
+        <select class="" name="register[state]">
+          <% IO.foreach('states.txt') do |line| %>
+            <option value="<%= line.strip %>"><%=line%></option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="">Password:</label></td>
+      <td><input type="password" name="register[password]" value=""></td>
+    </tr>
+    <tr>
+      <td>Password should be at least 8 characters</td>
+    </tr>
+    <tr>
+      <td><label for="">Confirm Password:</label></td>
+      <td><input type="password" name="register[password_confirmation]" value=""></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="submit" value="Register"></td>
+    </tr>
+    </form>
+  </table>
+</div>
+
+<div class="login">
+  <table>
+    <form class="" action="sessions" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <tr>
+        <td><label for="">Email:</label></td>
+        <td><input type="text" name="login[email]" value=""></td>
+      </tr>
+      <tr>
+        <td><label for="">Password:</label></td>
+        <td><input type="password" name="login[password]" value=""></td>
+      </tr>
+      <tr>
+        <td><input type="submit" name="submit" value="Login"></td>
+      </tr>
+    </form>
+
+  </table>
+
+</div>

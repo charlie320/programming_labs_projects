@@ -1,0 +1,19 @@
+<a href="/organizations">Dashboard</a>
+<h2><%=@organization.name%></h2>
+<h4><%=@organization.description%></h4>
+
+<h4><%="Created by: #{@user.first_name} #{@user.last_name}"%></h4>
+
+<% if @organization.user_members.exclude?(@user) %>
+  <%=link_to "Join Group", memberships_create_path(params[:id]), method: :post%>
+<% else %>
+  <%=link_to "Leave Group", memberships_destroy_path(params[:id]), method: :delete%>
+<% end %>
+
+
+
+<h4>Members:</h4>
+
+<% @members.distinct.each do |member| %>
+  <p><%="#{member.first_name} #{member.last_name}"%></p>
+<% end %>

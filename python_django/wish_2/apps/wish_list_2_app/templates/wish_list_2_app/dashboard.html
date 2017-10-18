@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dashboard</title>
+  </head>
+  <body>
+    <h1>Hello, {{ current_user.name }}</h1>
+    <a href="/logout">Logout</a>
+    <p>Your wish list:</p>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Added by</th>
+        <th>Date Added</th>
+        <th>Action</th>
+      </tr>
+      {% for wish in my_wishes %}
+        <tr>
+          <td><a href="/wish_items/{{wish.id}}">{{wish.name}}<a/></td>
+          <td>{{wish.created_by}}</td>
+          <td>{{wish.created_at}}</td>
+          <td>
+            {% if current_user == wish.created_by %}
+              <a href="/deleteWish/{{wish.id}}">Delete</a>
+            {% else %}
+              <a href="/removeWish/{{wish.id}}">Remove from my Wishlist</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <table>
+      <p>Other Users' Wish List</p>
+      <tr>
+        <th>Item</th>
+        <th>Added By</th>
+        <th>Date Added</th>
+        <th>Action</th>
+      </tr>
+      {% for notWish in not_wished_for_yet %}
+        <tr>
+          <td><a href="/wish_items/{{notWish.id}}">{{notWish.name}}<a/></td>
+          <!-- <td>{{notWish.name}}</td> -->
+          <td>{{notWish.created_by}}</td>
+          <td>{{notWish.created_at}}</td>
+          <td>
+            <a href="/addToWishList/{{notWish.id}}">Add to my Wish List</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <a href="/createItemPage">Add Item</a>
+  </body>
+</html>

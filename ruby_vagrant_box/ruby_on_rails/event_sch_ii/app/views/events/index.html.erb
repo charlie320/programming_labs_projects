@@ -1,0 +1,92 @@
+<h1><%= "Welcome, #{@user.first_name}!"%></h1>
+<%= link_to "Edit My Profile", users_edit_path(@user.id) %>
+<h3>Here are some of the events at your state:</h3>
+<table>
+  <tr class="in_state">
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Host</th>
+    <th class="join_cancel_delete">ActionStatus</th>
+  </tr>
+  <% @instate_events.each do |event| %>
+  <tr class="in_state_loop">
+    <td><a href="/events/<%=event.id%>"><%=event.name%></a></td>
+    <td><%= Date.parse(event.date).strftime('%B %d, %Y') %></td>
+    <td><%= event.city %></td>
+    <td><%=event.user.first_name%></td>
+
+    <td>
+      <% if event.user == @user %>
+        <td><%=link_to "Edit", events_edit_path(event.id)%><%=link_to "Delete", events_destroy_path(event.id), :method => :delete, :data => {:confirm => "Are you sure?"}%></td>
+      <% else%>
+        <% if event.users_attending.exclude? @user %>
+          <td><%= link_to "Join", signups_create_path(event.id), :method => :post %></td>
+        <% else %>
+          <td><%= link_to "Cancel", signups_destroy_path(event.id), :method => :delete %></td>
+        <% end %>
+      <% end %>
+    </td>
+
+  </tr>
+  <% end %>
+</table>
+<h3>Here are some of the events in other states:</h3>
+<table class="out_of_state">
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>State</th>
+    <th>Host</th>
+    <th class="join_cancel_delete">Action</th>
+  </tr>
+  <% @outstate_events.each do |event| %>
+  <tr class="out_of_state_loop">
+    <td><a href="/events/<%=event.id%>"><%=event.name%></a></td>
+    <td><%= Date.parse(event.date).strftime('%B %d, %Y') %></td>
+    <td><%= event.city %></td>
+    <td><%= event.state %></td>
+    <td><%=event.user.first_name%></td>
+
+    <td>
+      <% if event.user == @user %>
+        <td><%=link_to "Edit", events_edit_path(event.id)%><%=link_to "Delete", events_destroy_path(event.id), :method => :delete, :data => {:confirm => "Are you sure?"}%></td>
+      <% else%>
+        <% if event.users_attending.exclude? @user %>
+          <td><%= link_to "Join", signups_create_path(event.id), :method => :post %></td>
+        <% else %>
+          <td><%= link_to "Cancel", signups_destroy_path(event.id), :method => :delete %></td>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Add Event</h2>
+<table>
+    <form class="add_event" action="events" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <tr>
+      <th>Name:</th>
+      <td><input type="text" name="new_event[name]" value=""></td>
+    </tr>
+    <th>Date:</th>
+    <td><input type="date" name="new_event[date]" value=""></td>
+    <tr>
+      <th>Location:</th>
+      <td><input type="text" name="new_event[city]" value=""></td>
+      <td>
+        <select class="" name="new_event[state]">
+          <% IO.foreach('states.txt') do |line| %>
+            <option value="<%= line.strip %>"><%=line%></option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="submit" value="Add Event"></td>
+    </tr>
+  </form>
+</table>

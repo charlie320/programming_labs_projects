@@ -1,0 +1,43 @@
+<a href= "/events">Events Dashboard</a>
+
+<h1>Edit Your Profile</h1>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+  <form class="" action="/users/<%=@user.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+
+    <tr>
+      <td><label for="">First Name:</label></td>
+      <td>    <input type="text" name="register[first_name]" id="first_name" value="<%=@user.first_name%>"></td>
+    </tr>
+    <tr>
+      <td>    <label for="">Last Name:</label></td>
+      <td>    <input type="text" name="register[last_name]" id="last_name" value="<%=@user.last_name%>"></td>
+    </tr>
+    <tr>
+      <td><label for="">Email:</label></td>
+      <td><input type="text" name="register[email]" id="email" value="<%=@user.email%>"></td>
+    </tr>
+
+    <tr>
+      <td><label for="">Location:</label></td>
+      <td><input type="text" name="register[city]" value="<%=@user.city%>"></td>
+      <td>    <select class="" name="register[state]">
+            <% IO.foreach('states.txt') do |line| %>
+              <option value="<%= line.strip %>"><%=line%></option>
+            <% end %>
+          </select>
+        </td>
+    </tr>
+    <td><label for="">Password:</label></td>
+    <td><input type="password" name="register[password]" value="<%= @user.password %>"></td>
+    <tr>
+      <td><input type="submit" name="submit" value="Update Records"></td>
+    </tr>
+  </form>
+</table>

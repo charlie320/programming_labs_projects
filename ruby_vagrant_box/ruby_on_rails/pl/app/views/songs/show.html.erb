@@ -1,0 +1,19 @@
+<%= link_to "Dashboard", songs_path %>
+<h3><%= "Others who added #{@song.author} - #{@song.title}" %></h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Times Added</th>
+  </tr>
+
+<% @users.each do |user| %>
+<!-- <% unless UserPlaylist.where(user: user).where(song: @song).count == 0 %> -->
+  <tr>
+    <td><%= link_to "#{user.first_name} #{user.last_name}", users_show_path(user.id) %></td>
+    <!-- <td><%= UserPlaylist.where(user: user).where(song: @song).count %></td> -->
+    <td><%= user.number %></td>
+  </tr>
+<!-- <% end %> -->
+<% end %>
+</table>

@@ -1,0 +1,44 @@
+<h2><%= "Hi, #{@user.first_name} #{@user.last_name}!" %></h2>
+<h3>Here are the organizations you may join:</h3>
+
+<% @organizations.each do |org| %>
+  <table>
+      <tr>
+        <td><%= link_to org.name, organizations_show_path(org.id) %></td>
+      </tr>
+      <% if org.user_id == @user.id %>
+      <tr>
+        <td><%=link_to "Delete", organizations_destroy_path(org.id), method: :delete, :data => {:confirm => "Are you sure?"}%></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td><%="Members: #{org.user_members.count}"%></td>
+      </tr>
+      <tr>
+        <td><%=org.description%></td>
+      </tr>
+  </table>
+<% end %>
+
+
+<div class="new_organization">
+  <form class="" action="organizations" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <table>
+      <tr>
+        <td><h3>Create a new Organization</h3></td>
+      </tr>
+      <tr>
+        <th>Org Name:</th>
+        <td><input type="text" name="org[name]" value=""></td>
+      </tr>
+      <tr>
+        <th>Description:</th>
+        <td><textarea name="org[description]" rows="4" cols="25"></textarea></td>
+      </tr>
+      <tr>
+        <td><input type="submit" name="submit" value="Create"></td>
+      </tr>
+    </table>
+  </form>
+</div>

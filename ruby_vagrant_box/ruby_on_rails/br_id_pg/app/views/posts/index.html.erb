@@ -1,0 +1,44 @@
+  <h2><%= "Welcome, #{@user[:name_alias]}!" %></h2>
+
+  <div class="add_post">
+    <h3>Add Idea</h3>
+    <table class="">
+      <form class="add_post" action='posts' method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <tr>
+          <td><textarea name="new_idea[content]" rows="2" cols="40" ></textarea></td>
+        </tr>
+        <tr>
+          <td><input type="submit" name="add_event" value="Idea!"></td>
+        </tr>
+      </form>
+    </table>
+  </div>
+
+  <h4>Here is a list of posts:</h4>
+  <div class="posts">
+    <table class="">
+
+      <% @all_posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.user.name_alias, users_show_path(@user.id) %></td>
+          <td><%= post.content %></td>
+          <td>
+            <% if post.user.id == @user.id %>
+              <%= link_to "Delete", posts_path(post.id), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if post.user != @user %>
+              <%= link_to "Like", likes_create_path(post.id), :method => :post %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "#{post.likes.count} People ", posts_show_path(post.id) %>like this
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

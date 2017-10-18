@@ -1,0 +1,44 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dashboard</title>
+  </head>
+  <body>
+    <h1>Hello, user!</h1>
+    <a href="/logout">Logout</a>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success Page</title>
+  </head>
+  <body>
+    <h1>You're on the Success Page</h1>
+    <!-- <a href="{% url 'logout' %">Logout</a> -->
+    <a href="/logout"></a>
+
+    <h3>My Wish List:</h3>
+    {% for wish_item in wish_items %}
+      <p>{{wish_item.name}}  {{wish_item.user_id.first_name}}  {{wish_item.created_at}}</p>
+      <form class="" action="{% url 'removeWish' id=wish_item.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" name="" value="Remove from wish list!">
+      </form>
+    {% endfor %}
+
+    <h3>Other Users' Wish List:</h3>
+    {% for wish_item in wish_items %}
+      <p>{{wish_item.name}}  {{wish_item.created_at}}  {{wish_item.user_id.name}}</p>
+      <form class="" action="{% url 'addWish' id=user.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" value="Add to wish list!">
+      </form>
+    {% endfor %}
+
+      <a href="/addItem">Add Item</a>
+  </body>
+</html>

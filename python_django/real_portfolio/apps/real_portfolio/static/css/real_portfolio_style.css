@@ -1,0 +1,21 @@
+body{
+  width: 905px;
+}
+
+a{
+  text-decoration: none;
+  color: orange;
+}
+
+h2{
+  text-align: center;
+}
+
+h4{
+  text-align: center;
+}
+
+body > div{
+  display: inline-block;
+  width: 298px;
+}

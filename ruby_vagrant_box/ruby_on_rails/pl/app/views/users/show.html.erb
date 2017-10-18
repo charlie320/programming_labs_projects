@@ -1,0 +1,19 @@
+<%= link_to "Dashboard", songs_path %>
+
+<h3><%= "#{@user.first_name} #{@user.last_name}'s Playlist:" %>!</h3>
+
+<table>
+  <tr>
+    <th>Artist</th>
+    <th>Title</th>
+    <th>Times Added</th>
+  </tr>
+  <% @my_playlist.each do |song| %>
+  <tr>
+    <td><%= song.author %></td>
+    <td><%= song.title %></td>
+    <!-- <td><%= UserPlaylist.where(song: song).where(user: @user).count %></td> -->
+    <td><%= song.number %></td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,14 @@
+Django New Project Command List
+
+Initial Setup:
+    1. Start Your djangoEnv
+    2. Navigate to the directory you want your project to be
+
+* All the follow commands are typed in terminal *
+mkdir <assignment_name>
+cd <assignment_name>
+django-admin startproject main .
+mkdir apps
+cd apps
+touch __init__.py
+python ../manage.py startapp <app_name>

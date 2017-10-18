@@ -1,0 +1,32 @@
+<h3>This is the idea show page!</h3>
+
+
+<a href="/posts">Bright Ideas</a>
+<h2><%= @poster.name_alias %></h2>
+
+<table>
+  <tr>
+    <td><%= link_to "#{@poster.name_alias} ", users_show_path(@poster.id) %>says:</td>
+    <td><%= @post.content %></td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th>People who liked this post:</th>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Alias</th>
+    <th>Name</th>
+  </tr>
+  <% @likers.each do |like| %>
+    <tr>
+      <td>  <%= "#{like.name_alias}" %></td>
+      <td>  <%= like.name %></td>
+    </tr>
+  <% end %>
+</table>

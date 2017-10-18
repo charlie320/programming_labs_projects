@@ -1,0 +1,26 @@
+<a href="/events">Events Dashboard</a>
+<h1>Edit</h1>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<form class="" action='/users/<%= @user.id %>' method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="">First Name:</label>
+  <input type="text" name="users[first_name]" id="name" value="<%= @user.first_name %>">
+  <label for="">Last Name:</label>
+  <input type="text" name="users[last_name]" id="name" value="<%= @user.last_name %>">
+  <label for="">Email:</label>
+  <input type="text" name="users[email]" id="email" value="<%= @user.email %>">
+  <label for="">Location:</label>
+  <input type="text" name="users[city]" id="name" value="<%= @user.city %>">
+  <select class="" name="users[state]">
+    <% IO.foreach('states.txt') do |line| %>
+      <option value="<%= line.strip %>"><%=line%></option>
+    <% end %>
+  </select>
+  <label for="">Password</label>
+  <input type="password" name="users[password]" id="password">
+  <input type="submit" name="submit" value="Submit">
+</form>

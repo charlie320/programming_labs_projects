@@ -1,0 +1,56 @@
+header {
+  background-color: gray;
+  width: 95%;
+}
+
+header > h1 {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+header > h2 {
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+nav > a {
+  background-color: lightgray;
+  border-radius: 7px;
+  padding: 7px;
+}
+
+.row {
+  clear: both;
+  padding-left: 20px;
+}
+
+#wrapper {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column {
+  float: left;
+  padding-right: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  .twelve-s { width: 100%; }
+}
+
+@media only screen and (min-width: 481px) {
+  .four-m { width: 40%; }
+}
+
+@media only screen and (min-width: 700px) {
+  .three-m { width: 30%; }
+  .full-bottom { width: 100%;}
+}
+
+@media all and (min-width: 1024px) {
+  .four-l { width: 20%; }
+}
+
+@media only screen and (max-width: 800px) {
+  nav { visibility: hidden; }
+}

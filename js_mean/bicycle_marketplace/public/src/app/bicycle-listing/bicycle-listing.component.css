@@ -6,12 +6,6 @@ header {
 header > h2 {
   margin: 10px;
 }
-img {
-  margin-top: 10px;
-  margin-left: 10px;
-  max-height: 80%;
-  max-width: 400px;
-}
 .form_section {
   height: 325px;
   width: 95%;
@@ -37,9 +31,6 @@ input[type="submit"] {
   font-size: 1em;
   background-color: rgb(125, 175, 125);
   display: block;
-}
-#create_button {
-  float: right;
 }
 #delete_button {
   padding: 10px 20px;

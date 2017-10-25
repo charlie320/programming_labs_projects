@@ -70,26 +70,26 @@ export class ListingsComponent implements OnInit {
     );
   }
 
-  updateBike(bike) {
-    return this._postService.update(bike)
-    .then(bike => {
-      console.log(bike);
-    })
-    .catch(err => { console.log(err) })
-  }
+  updatePost(post) {
+    console.log("Inside the updatePost method: listings.component");
+    console.log(post);
+    // return this._postService.update(post)
+    // .then(bike => {
+    //   console.log(post);
+    // })
+    // .catch(err => { console.log(err) })
 
-  // updatePost(id: any, updatedBicycle: Post) {
-  //   console.log("Inside the updatePost method in listings.component");
-  //   // this.errors = [];
-  //   this.updatedBicycle.user = this.currentUser;
-  //   console.log(this.updatedBicycle);
-  //   console.log(this.currentUser);
-  //   this._postService.update(id, updatedBicycle, post => this.post = post);
-  //
-  //   console.log("After return of post in the updatePost method");
-  //   this.getPosts();
-  //   this._router.navigateByUrl('/listings');
-  // }
+    return this._postService.update(post, data => {
+      if(data.errors) {
+        console.log (data.errors);
+      } else {
+        this.post = data;
+        console.log("Successfully updated the bicycle post!");
+        this.getPosts();
+      }
+    })
+
+  }
 
   destroyPost(id: string, idx: number) {
     this._postService.destroy(id, res => {

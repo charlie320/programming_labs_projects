@@ -26,9 +26,9 @@ export class LoginRegComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ninja.email = 'john@doe.com'
-    this.ninja.password = 'john1234'
-    this.loginUser();
+    // this.ninja.email = 'john@doe.com'
+    // this.ninja.password = 'john1234'
+    // this.loginUser();
 
   }
 

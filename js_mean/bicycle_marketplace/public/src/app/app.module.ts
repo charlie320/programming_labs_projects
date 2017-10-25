@@ -10,6 +10,7 @@ import { PostService } from './post.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
 import { ListingsComponent } from './listings/listings.component';
+import { BicycleListingComponent } from './bicycle-listing/bicycle-listing.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListingsComponent } from './listings/listings.component';
     LoginRegComponent,
     DashboardComponent,
     NavComponent,
-    ListingsComponent
+    ListingsComponent,
+    BicycleListingComponent
   ],
   imports: [
     BrowserModule,

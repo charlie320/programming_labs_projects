@@ -15,10 +15,6 @@ export class PostService {
       );
     }
 
-    getPostsByUser(callback) {
-
-    }
-
     create(newPost: Post, callback) {
       this._http.post('/posts', newPost).subscribe(
         res => callback(res.json()),
@@ -27,22 +23,20 @@ export class PostService {
     }
 
     show(id: string, callback) {
-      this._http.get(`posts/${id}`).subscribe(
+      this._http.get(`/posts/${id}`).subscribe(
         res => callback(res.json()),
         err => console.log(err)
       );
     }
 
-    // update(id: any, updatedPost: Post, callback) {
-    //   console.log("Inside the update method in post.service");
-    //   this._http.put(`posts/${id}`, updatedPost).subscribe(
-    //     res => callback(res.json()),
-    //     err => console.log(err)
-    //   );
-    // }
-
-    update(bike){
-      return this._http.patch(`/posts/${bike._id}`, bike).map(data => data.json()).toPromise();
+    update(post, callback){
+      console.log("Inside the update method: post.service.");
+      console.log(post);
+      // return this._http.put(`/posts/${post._id}`, post).map(data => data.json()).toPromise(); //  this line works as well
+      this._http.put(`/posts/${post._id}`, post).subscribe(
+        res => callback(res.json()),
+        err => console.log(err)
+      );
     }
 
     destroy(id: string, callback) {

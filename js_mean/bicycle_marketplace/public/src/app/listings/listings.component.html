@@ -57,7 +57,7 @@
           [(ngModel)]="newBicycle.location"
           placeholder="Location">
         </div>
-        <input type="submit" value="Create">
+        <input id="create_button" type="submit" value="Create">
       </div>
     </form>
   </section>
@@ -75,7 +75,9 @@
   </header>
 
   <section class="form_section">
-    <form #myForm="ngForm" (submit)="updatePost(updatedBicycle); myForm.reset()">
+    <!-- <form #myForm="ngForm" (submit)="updatePost(); myForm.reset()"> -->
+    <form (submit)="updatePost(post)">
+
       <div class="left">
         <h4>Image Upload</h4>
         <img src="rob-bye-200735.jpg" alt="Bicycle Goes Here" width="95%">
@@ -89,7 +91,8 @@
           type="text"
           name="title"
           #title="ngModel"
-          [(ngModel)]="updatedBicycle.title"
+          [(ngModel)]="post.title"
+          [value]="post.title"
           [placeholder]="post.title">
         </div>
 
@@ -100,8 +103,10 @@
           type="text"
           name="description"
           #description="ngModel"
-          [(ngModel)]="updatedBicycle.description"
-          [placeholder]="post.description">
+          [(ngModel)]="post.description"
+          [value]="post.description"
+          [placeholder]="post.description"
+          >
         </div>
       </div>
 
@@ -113,7 +118,8 @@
           type="text"
           name="price"
           #price="ngModel"
-          [(ngModel)]="updatedBicycle.price"
+          [(ngModel)]="post.price"
+          [value]="post.price"
           [placeholder]="post.price">
         </div>
         <div class="">
@@ -124,7 +130,8 @@
           type="text"
           name="location"
           #location="ngModel"
-          [(ngModel)]="updatedBicycle.location"
+          [(ngModel)]="post.location"
+          [value]="post.location"
           [placeholder]="post.location">
         </div>
         <div id="edit_delete_div">

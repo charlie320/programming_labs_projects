@@ -35,12 +35,11 @@ class PostsController {
         }
         return res.json(post);
       })
-      // look up the User who made the post
-      // push post._id to the User's posts array
     })
   }
 
   update(req, res){
+    console.log("This is req.params.id:  ", req.params.id);
     Post.findByIdAndUpdate(req.params.id, { $set : req.body }, { runValidators: true, new: true }, (err, post) => {
       if(err){
         return res.json(err);

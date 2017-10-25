@@ -1,0 +1,88 @@
+header {
+  height: 25%;
+  width: 95%;
+  background-color: rgb(100, 100, 100);
+}
+header > h2 {
+  margin: 10px;
+}
+.form_section {
+  height: 325px;
+  width: 95%;
+  background-color: rgb(150, 150, 150);
+}
+section > form {
+  height: 100%;
+}
+section > form > div > h4 {
+  line-height: 0px;
+}
+footer {
+  height: 15%;
+  width: 95%;
+  background-color: rgb(225, 225, 225);
+}
+input[type="submit"] {
+  padding: 10px 20px;
+  margin-right: 50px;
+  margin-top: 20px;
+  color: rgb(50, 75, 50);
+  font-family: arial;
+  font-size: 1em;
+  background-color: rgb(125, 175, 125);
+  display: block;
+}
+#delete_button {
+  padding: 10px 20px;
+  margin-right: 50px;
+  margin-top: 20px;
+  color: rgb(250, 225, 225);
+  font-family: arial;
+  font-size: 1em;
+  background-color: rgb(125, 175, 125);
+  display: block;
+  background-color: rgb(200, 75, 75);
+}
+#edit_delete_div {
+  float: right;
+}
+.left {
+  background-color: rgb(200, 175, 175);
+  float: left;
+  width: 33%;
+  height: 95%;
+}
+.middle {
+  background-color: rgb(175, 200, 175);
+  float: left;
+  width: 33%;
+  height: 95%;
+}
+.right {
+  background-color: rgb(175, 175, 200);
+  float: left;
+  width: 33%;
+  height: 95%;
+}
+.block {
+  display: block;
+}
+.middle, .right > div > label {
+  font-family: arial;
+  font-size: 1em;
+  line-height: 35px;
+}
+.middle > div > input {
+  width: 75%;
+  height: 5%;
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+.right > div > input[type="text"] {
+  width: 70%;
+  height: 5%;
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+}

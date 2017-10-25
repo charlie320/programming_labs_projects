@@ -8,12 +8,16 @@ import { LoginRegComponent } from './login-reg/login-reg.component';
 import { UserService } from './user.service';
 import { PostService } from './post.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavComponent } from './nav/nav.component';
+import { ListingsComponent } from './listings/listings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavComponent,
+    ListingsComponent
   ],
   imports: [
     BrowserModule,

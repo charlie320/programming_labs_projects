@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from './post';
 import { Http } from '@angular/http';
+import 'rxjs';
 
 @Injectable()
 export class PostService {
@@ -15,7 +16,7 @@ export class PostService {
     }
 
     getPostsByUser(callback) {
-      
+
     }
 
     create(newPost: Post, callback) {
@@ -32,11 +33,16 @@ export class PostService {
       );
     }
 
-    update(newPost: Post, callback) {
-      this._http.put(`posts/${newPost._id}`, newPost).subscribe(
-        res => callback(res.json()),
-        err => console.log(err)
-      );
+    // update(id: any, updatedPost: Post, callback) {
+    //   console.log("Inside the update method in post.service");
+    //   this._http.put(`posts/${id}`, updatedPost).subscribe(
+    //     res => callback(res.json()),
+    //     err => console.log(err)
+    //   );
+    // }
+
+    update(bike){
+      return this._http.patch(`/posts/${bike._id}`, bike).map(data => data.json()).toPromise();
     }
 
     destroy(id: string, callback) {

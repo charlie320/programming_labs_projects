@@ -35,7 +35,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getPosts(){
-    console.log("Inside the get posts function");
     this._postService.index(posts => this.posts = posts);
   }
 

@@ -6,7 +6,6 @@ const User = mongoose.model('User');
 
 class PostsController {
   index(req, res){
-    console.log("In the index method.");
     // Post.find({}, (err, Posts) => {
     Post.find({}).sort('name').exec((err, posts) => {
       if(err){
@@ -51,11 +50,23 @@ class PostsController {
   }
 
   destroy(req, res){
-    Post.findByIdAndRemove(req.params.id, (err, result) => {
+    // Post.findByIdAndRemove(req.params.id, (err, result) => {
+    Post.findById(req.params.id, (err, result) => {
       if(err){
         return res.json(err);
       }
-      return res.json({ "success": "Successfully deleted post." })
+      if(result.user == req.session.user_id){
+        result.remove();
+        User.findByIdAndUpdate(result.user, { $pull: { posts: req.params.id} }, {new: true}, (err) => {
+          if(err){
+            return res.json(err);
+          }
+          return res.json({"success": "Successfuly deleted post and pulled from user"});
+        })
+      }  //  end if() authorization check
+      else {
+        return res.json({ status : false })
+      }
     });
   }
 }

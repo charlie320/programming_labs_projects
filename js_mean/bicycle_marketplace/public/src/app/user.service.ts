@@ -17,7 +17,7 @@ export class UserService {
   getPosts(callback) {
     this._http.get('/getPosts').subscribe(
       res => callback(res.json()),
-      err => console.log(err)      
+      err => console.log(err)
     );
   }
 

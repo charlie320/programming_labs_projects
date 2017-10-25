@@ -9,6 +9,7 @@ const app = express();
 // app.set('views', __dirname + '/client/views');
 
 app.use(express.static(__dirname + '/public/dist'));
+app.use(express.static(__dirname + '/server/uploads'));
 // Remember to specify json instead of urlencoded.
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

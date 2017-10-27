@@ -10,7 +10,6 @@ module.exports = function(app){
   app.post('/posts', Posts.create);
   app.put('/posts/:id', Posts.update);
   app.delete('/posts/:id', Posts.destroy);
-
   app.get('/users', Users.index);
   app.get('/users/:id', Users.show);
 

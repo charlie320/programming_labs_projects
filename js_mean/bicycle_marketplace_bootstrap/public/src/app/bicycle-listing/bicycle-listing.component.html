@@ -1,0 +1,78 @@
+<section class="browsing_wrapper">
+  <header>
+    <h2>{{post.title}}</h2>
+    <h2>{{post._id}}</h2>
+  </header>
+
+  <section class="form_section">
+    <!-- <form #myForm="ngForm" (submit)="updatePost(); myForm.reset()"> -->
+    <form #myForm="ngForm" (submit)="updatePost(updatedBicycle); myform.reset()">
+
+      <div class="left">
+        <h4>Image Upload</h4>
+        <img src="rob-bye-200735.jpg" alt="Bicycle Goes Here" width="95%">
+      </div>
+
+      <div class="middle">
+        <div class="label_input_pair">
+          <label class="block" for="title">Title</label>
+          <input
+          class="block"
+          type="text"
+          name="title"
+          #title="ngModel"
+          [(ngModel)]="updatedBicycle.title"
+          [value]="post.title"
+          [placeholder]="post.title">
+        </div>
+
+        <div class="label_input_pair">
+          <label class="block" for="description">Description</label>
+          <input
+          class="block"
+          type="text"
+          name="description"
+          #description="ngModel"
+          [(ngModel)]="updatedBicycle.description"
+          [value]="post.description"
+          [placeholder]="post.description">
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="label_input_pair">
+          <label class="block" for="price">Price</label>
+          <input
+          class="block"
+          type="text"
+          name="price"
+          #price="ngModel"
+          [(ngModel)]="updatedBicycle.price"
+          [value]="post.price"
+          [placeholder]="post.price">
+        </div>
+        <div class="">
+
+          <label class="block" for="location">Location</label>
+          <input
+          class="block"
+          type="text"
+          name="location"
+          #location="ngModel"
+          [(ngModel)]="updatedBicycle.location"
+          [value]="post.location"
+          [placeholder]="post.location">
+        </div>
+        <div id="edit_delete_div">
+          <input type="submit" value="Update">
+          <button id="delete_button" (click)="destroyPost(post._id, idx)">Delete</button>
+        </div>
+
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    footer
+  </footer>
+</section>

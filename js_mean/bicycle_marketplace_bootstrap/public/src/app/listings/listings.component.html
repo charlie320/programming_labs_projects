@@ -1,149 +1,150 @@
 <app-nav></app-nav>
-<section class="create_wrapper">
-  <header>
-    <h2>Create Listing</h2>
-  </header>
 
-  <section class="form_section">
-    <form #myForm="ngForm" (ngSubmit)="createPost(); myForm.reset()">
-      <div class="left">
-        <h4>Image Upload</h4>
-        <img src="rob-bye-200735.jpg" alt="Bicycle Goes Here" width="95%">
-      </div>
+<section class="create-listing">
+  <div class="container-fluid">
+    <h1>Create Listing</h1>
+    <form class="create-form" #myForm="ngForm" (ngSubmit)="createPost(); myForm.reset()">
 
-      <div class="middle">
-        <div class="label_input_pair">
-          <label class="block" for="title">Title</label>
-          <input
-          class="block"
-          type="text"
-          name="title"
-          #title="ngModel"
-          [(ngModel)]="newBicycle.title"
-          placeholder="Title">
+      <div class="row">
+        <div class="col-md-4" style="background-color=#ef9a9a">
+          <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
         </div>
 
-        <div class="label_input_pair">
-          <label class="block" for="description">Description</label>
-          <input
-          class="block"
-          type="text"
-          name="description"
-          #description="ngModel"
-          [(ngModel)]="newBicycle.description"
-          placeholder="Description">
+        <div class="col-md-5" style="background-color=#f48fb1">
+          <div class="form-group col-md-8">
+            <label for="inputTitle4">Title</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputTitle4"
+            name="title"
+            #title="ngModel"
+            [(ngModel)]="newBicycle.title"
+            placeholder="Title"
+            />
+          </div>
+          <div class="form-group col-md-10">
+            <label for="inputDescription">Description</label>
+            <textarea
+            class="form-control"
+            id="inputDescription"
+            name="description"
+            #description="ngModel"
+            [(ngModel)]="newBicycle.description"
+            placeholder="Description"
+            >
+            </textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="right">
-        <div class="label_input_pair">
-          <label class="block" for="price">Price</label>
-          <input
-          class="block"
-          type="text"
-          name="price"
-          #price="ngModel"
-          [(ngModel)]="newBicycle.price"
-          placeholder="Price">
+        <div class="col-md-3" style="background-color=#ba68c8">
+          <div class="form-group col-md-6">
+            <label for="inputPrice4">Price</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputPrice4"
+            name="price"
+            #price="ngModel"
+            [(ngModel)]="newBicycle.price"
+            placeholder="Price"
+            >
+          </div>
+          <div class="form-group col-md-9">
+            <label for="inputLocation4">Location</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputLocation4"
+            name="location"
+            #location="ngModel"
+            [(ngModel)]="newBicycle.location"
+            placeholder="Location"
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
         </div>
-        <div class="">
-
-          <label class="block" for="location">Location</label>
-          <input
-          class="block"
-          type="text"
-          name="location"
-          #location="ngModel"
-          [(ngModel)]="newBicycle.location"
-          placeholder="Location">
-        </div>
-        <input id="create_button" type="submit" value="Create">
       </div>
     </form>
-  </section>
-
-  <footer>
-    footer
-  </footer>
+  </div>
 </section>
 
 
-<section class="edit_delete_wrapper" *ngFor="let post of postsOwner.posts; let idx = index">
-  <header>
-    <h2>Edit_Delete Listing</h2>
-    <h2>{{post._id}}</h2>
-  </header>
 
-  <section class="form_section">
-    <!-- <form #myForm="ngForm" (submit)="updatePost(); myForm.reset()"> -->
-    <form (submit)="updatePost(post)">
 
-      <div class="left">
-        <h4>Image Upload</h4>
-        <img src="rob-bye-200735.jpg" alt="Bicycle Goes Here" width="95%">
-      </div>
+<h1>Edit/Delete Listing</h1>
+<section class="update-listing" *ngFor="let post of postsOwner.posts; let idx = index">
+  <div class="container-fluid">
 
-      <div class="middle">
-        <div class="label_input_pair">
-          <label class="block" for="title">Title</label>
-          <input
-          class="block"
-          type="text"
-          name="title"
-          #title="ngModel"
-          [(ngModel)]="post.title"
-          [value]="post.title"
-          [placeholder]="post.title">
+    <form class="update-form" #myForm="ngForm" (ngSubmit)="updatePost(post); myForm.reset()">
+
+      <div class="row">
+        <div class="col-md-4" style="background-color=#ef9a9a">
+          <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
         </div>
 
-        <div class="label_input_pair">
-          <label class="block" for="description">Description</label>
-          <input
-          class="block"
-          type="text"
-          name="description"
-          #description="ngModel"
-          [(ngModel)]="post.description"
-          [value]="post.description"
-          [placeholder]="post.description"
-          >
-        </div>
-      </div>
-
-      <div class="right">
-        <div class="label_input_pair">
-          <label class="block" for="price">Price</label>
-          <input
-          class="block"
-          type="text"
-          name="price"
-          #price="ngModel"
-          [(ngModel)]="post.price"
-          [value]="post.price"
-          [placeholder]="post.price">
-        </div>
-        <div class="">
-
-          <label class="block" for="location">Location</label>
-          <input
-          class="block"
-          type="text"
-          name="location"
-          #location="ngModel"
-          [(ngModel)]="post.location"
-          [value]="post.location"
-          [placeholder]="post.location">
-        </div>
-        <div id="edit_delete_div">
-          <input type="submit" value="Update">
-          <button id="delete_button" (click)="destroyPost(post._id, idx)">Delete</button>
+        <div class="col-md-5" style="background-color=#f48fb1">
+          <div class="form-group col-md-8">
+            <label for="inputTitle4">Title</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputTitle4"
+            name="title"
+            #title="ngModel"
+            [(ngModel)]="post.title"
+            [value]="post.title"
+            [placeholder]="post.title"
+            />
+          </div>
+          <div class="form-group col-md-10">
+            <label for="inputDescription">Description</label>
+            <textarea
+            class="form-control"
+            id="inputDescription"
+            name="description"
+            #description="ngModel"
+            [(ngModel)]="post.description"
+            [value]="post.description"
+            [placeholder]="post.description"
+            >
+            </textarea>
+          </div>
         </div>
 
+        <div class="col-md-3" style="background-color=#ba68c8">
+          <div class="form-group col-md-6">
+            <label for="inputPrice4">Price</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputPrice4"
+            name="price"
+            #price="ngModel"
+            [(ngModel)]="post.price"
+            [value]="post.price"
+            [placeholder]="post.price"
+            >
+          </div>
+          <div class="form-group col-md-9">
+            <label for="inputLocation4">Location</label>
+            <input
+            type="text"
+            class="form-control"
+            id="inputLocation4"
+            name="location"
+            #location="ngModel"
+            [(ngModel)]="post.location"
+            [value]="post.location"
+            [placeholder]="post.location"
+            >
+          </div>
+          <div id="edit_delete_div">
+            <input type="submit" class="btn btn-primary" value="Update">
+            <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
+          </div>
+        </div>
       </div>
     </form>
-  </section>
-
-  <footer>
-    footer
-  </footer>
+  </div>
 </section>

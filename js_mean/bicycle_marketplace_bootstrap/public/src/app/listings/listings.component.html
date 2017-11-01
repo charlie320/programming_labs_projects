@@ -70,7 +70,6 @@
 </section>
 
 
-
 <section class="container-fluid" id="update-listings">
   <h1>Edit/Delete Listings</h1>
   <div class="" *ngFor="let post of postsOwner.posts; let idx = index">
@@ -79,7 +78,18 @@
 
         <div class="row">
           <div class="col-md-4" style="background-color=#ef9a9a">
-            <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
+          <p>{{post._id}}</p>
+            <form
+            class="form-group"
+            #myOtherForm="ngForm"
+            (submit)="sendUpload(post._id); myOtherForm.reset()">
+              <img src="{{post.photo}}" class="img-responsive img-thumbnail" alt="bicycle image">
+              <input type="file" name="photo" ng2FileSelect [uploader]="uploader">
+              <input
+              type="submit"
+              value="Add/Update Photo"
+              [disabled]="!uploader.getNotUploadedItems().length">
+            </form>
           </div>
 
           <div class="col-md-5" style="background-color=#f48fb1">
@@ -139,7 +149,7 @@
               >
             </div>
             <div id="edit_delete_div">
-              <input type="submit" class="btn btn-warning" value="Update">
+              <input type="submit" class="btn btn-info" value="Update">
               <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
             </div>
           </div>
@@ -147,8 +157,5 @@
       </form>
     </div>
   </div>
-
-
-
 
 </section>

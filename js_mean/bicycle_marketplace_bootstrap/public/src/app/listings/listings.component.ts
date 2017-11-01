@@ -4,13 +4,17 @@ import { UserService } from '../user.service';
 import { PostService } from '../post.service';
 import { User } from '../user';
 import { Post } from '../post';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+
+const URL = 'http://localhost:8000/upload_photo';
 
 @Component({
   selector: 'app-listings',
   templateUrl: './listings.component.html',
   styleUrls: ['./listings.component.css']
 })
+
 export class ListingsComponent implements OnInit {
 
   currentUser: User = new User();
@@ -21,6 +25,8 @@ export class ListingsComponent implements OnInit {
   newBicycle: Post = new Post();
   updatedBicycle: Post = new Post();
   user_id: any = null;
+
+  public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
 
   constructor(
     private _userService: UserService,
@@ -40,7 +46,24 @@ export class ListingsComponent implements OnInit {
     this._activatedRoute.params.subscribe(param => {
       this.user_id = param.id;
     })
+    this.forFileUpload();
     this.getPosts();
+
+  }
+
+  sendUpload(id: any) {
+    this.uploader.options.additionalParameter = {'post_id': id};
+    this.uploader.uploadAll();
+    this.getPosts();
+  }
+
+  forFileUpload() {
+    // override the onAfterAddingFile property of the uploader so it doesn't authenticate with credentials.
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    // override the onCompleteItem property of the uploader so we are able to deal with the server response.
+    this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+    this.getPosts();
+    };
   }
 
   getPosts() {

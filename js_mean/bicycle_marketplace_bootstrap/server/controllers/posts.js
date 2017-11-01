@@ -1,10 +1,18 @@
 // import mongoose
 const mongoose = require('mongoose');
+// import multer
+const multer = require('multer');
+const path = require('path');
+const DIR = __dirname + '/../uploads/';
+const upload = multer({dest: DIR}).single('photo');
+const fs = require('fs');
+
 // import Post model
 const Post = mongoose.model('Post');
 const User = mongoose.model('User');
 
 class PostsController {
+
   index(req, res){
     // Post.find({}, (err, Posts) => {
     // Post.find({}).sort('name').exec((err, posts) => {
@@ -22,6 +30,42 @@ class PostsController {
         return res.json({error: '404 - Post not found' });
       }
       return res.json(post);
+    })
+  }
+
+  // upload_photo method
+  upload_photo(req,res) {
+    var path;
+    console.log("In the posts controller upload photo method");
+
+    upload(req, res, function(err) {
+      if(err) {
+        return res.json({ status: 'Cound not save file'});
+      }
+      Post.findById(req.body.post_id, (err, post) => {
+        console.log("Inside the Post.findById method.")
+        console.log(post._id);
+        if(err) {
+          return res.json(err);
+        }
+        path = `/Users/Charlie/Documents/Programming/programming_labs_projects/js_mean/bicycle_marketplace_bootstrap/server/uploads/${post.photo}`;
+      // });
+        Post.findByIdAndUpdate(req.body.post_id, { $set: { photo: req.file.filename } }, {new: true}, (err, post) => {
+          console.log("Inside the findByIdAndUpdate method.")
+          if(err) {
+            return res.json(err);
+          }
+          fs.unlink(path, (e) => {
+            if(e) {
+              console.log("No file found.");
+            } else {
+              console.log("Successfully deleted old photo file.")
+            }
+          });
+        });
+      });
+      // console.log(req.file);
+      // console.log(req.body.post_id);
     })
   }
 

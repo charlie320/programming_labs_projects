@@ -30,8 +30,6 @@ export class PostService {
     }
 
     update(post, callback){
-      console.log("Inside the update method: post.service.");
-      console.log(post);
       // return this._http.put(`/posts/${post._id}`, post).map(data => data.json()).toPromise(); //  this line works as well
       this._http.put(`/posts/${post._id}`, post).subscribe(
         res => callback(res.json()),

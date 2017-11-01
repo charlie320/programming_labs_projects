@@ -4,7 +4,7 @@
   <div class="container-fluid post-box" *ngFor="let post of posts">
     <div class="row">
       <div class="col-md-4">
-        <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
+        <img src="{{post.photo}}" class="img-responsive img-thumbnail" alt="bicycle image">
       </div>
       <div class="col-md-4">
         <h1 class="block">{{post.title}}</h1>

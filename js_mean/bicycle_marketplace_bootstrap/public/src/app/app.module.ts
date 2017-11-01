@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
 import { ListingsComponent } from './listings/listings.component';
 import { BicycleListingComponent } from './bicycle-listing/bicycle-listing.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BicycleListingComponent } from './bicycle-listing/bicycle-listing.compo
     DashboardComponent,
     NavComponent,
     ListingsComponent,
-    BicycleListingComponent
+    BicycleListingComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

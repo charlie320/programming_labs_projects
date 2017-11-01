@@ -48,10 +48,8 @@ export class ListingsComponent implements OnInit {
   }
 
   createPost() {
-    console.log("Inside the createPost method.")
     this.errors = [];
     this.newBicycle.user = this.currentUser;
-    console.log("newBicycle with current user:  ", this.newBicycle);
     this._postService.create(
       this.newBicycle,
       data => {
@@ -71,14 +69,6 @@ export class ListingsComponent implements OnInit {
   }
 
   updatePost(post) {
-    console.log("Inside the updatePost method: listings.component");
-    console.log(post);
-    // return this._postService.update(post)
-    // .then(bike => {
-    //   console.log(post);
-    // })
-    // .catch(err => { console.log(err) })
-
     return this._postService.update(post, data => {
       if(data.errors) {
         console.log (data.errors);
@@ -88,7 +78,6 @@ export class ListingsComponent implements OnInit {
         this.getPosts();
       }
     })
-
   }
 
   destroyPost(id: string, idx: number) {

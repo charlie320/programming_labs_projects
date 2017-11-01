@@ -190,7 +190,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "header {\n  height: 25%;\n  width: 95%;\n  background-color: rgb(100, 100, 100);\n}\nheader > h2 {\n  margin: 10px;\n}\n.form_section {\n  height: 325px;\n  width: 95%;\n  background-color: rgb(150, 150, 150);\n}\nsection > form {\n  height: 100%;\n}\nsection > form > div > h4 {\n  line-height: 0px;\n}\nfooter {\n  height: 15%;\n  width: 95%;\n  background-color: rgb(225, 225, 225);\n}\ninput[type=\"submit\"] {\n  padding: 10px 20px;\n  margin-right: 50px;\n  margin-top: 20px;\n  color: rgb(50, 75, 50);\n  font-family: arial;\n  font-size: 1em;\n  background-color: rgb(125, 175, 125);\n  display: block;\n}\n#delete_button {\n  padding: 10px 20px;\n  margin-right: 50px;\n  margin-top: 20px;\n  color: rgb(250, 225, 225);\n  font-family: arial;\n  font-size: 1em;\n  background-color: rgb(125, 175, 125);\n  display: block;\n  background-color: rgb(200, 75, 75);\n}\n#edit_delete_div {\n  float: right;\n}\n.left {\n  background-color: rgb(200, 175, 175);\n  float: left;\n  width: 33%;\n  height: 95%;\n}\n.middle {\n  background-color: rgb(175, 200, 175);\n  float: left;\n  width: 33%;\n  height: 95%;\n}\n.right {\n  background-color: rgb(175, 175, 200);\n  float: left;\n  width: 33%;\n  height: 95%;\n}\n.block {\n  display: block;\n}\n.middle, .right > div > label {\n  font-family: arial;\n  font-size: 1em;\n  line-height: 35px;\n}\n.middle > div > input {\n  width: 75%;\n  height: 5%;\n  padding: 10px;\n  margin-left: 5px;\n  border-radius: 5px;\n}\n.right > div > input[type=\"text\"] {\n  width: 70%;\n  height: 5%;\n  padding: 10px;\n  margin-left: 5px;\n  border-radius: 5px;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -203,7 +203,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/bicycle-listing/bicycle-listing.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"browsing_wrapper\">\n  <header>\n    <h2>{{post.title}}</h2>\n    <h2>{{post._id}}</h2>\n  </header>\n\n  <section class=\"form_section\">\n    <!-- <form #myForm=\"ngForm\" (submit)=\"updatePost(); myForm.reset()\"> -->\n    <form #myForm=\"ngForm\" (submit)=\"updatePost(updatedBicycle); myform.reset()\">\n\n      <div class=\"left\">\n        <h4>Image Upload</h4>\n        <img src=\"rob-bye-200735.jpg\" alt=\"Bicycle Goes Here\" width=\"95%\">\n      </div>\n\n      <div class=\"middle\">\n        <div class=\"label_input_pair\">\n          <label class=\"block\" for=\"title\">Title</label>\n          <input\n          class=\"block\"\n          type=\"text\"\n          name=\"title\"\n          #title=\"ngModel\"\n          [(ngModel)]=\"updatedBicycle.title\"\n          [value]=\"post.title\"\n          [placeholder]=\"post.title\">\n        </div>\n\n        <div class=\"label_input_pair\">\n          <label class=\"block\" for=\"description\">Description</label>\n          <input\n          class=\"block\"\n          type=\"text\"\n          name=\"description\"\n          #description=\"ngModel\"\n          [(ngModel)]=\"updatedBicycle.description\"\n          [value]=\"post.description\"\n          [placeholder]=\"post.description\">\n        </div>\n      </div>\n\n      <div class=\"right\">\n        <div class=\"label_input_pair\">\n          <label class=\"block\" for=\"price\">Price</label>\n          <input\n          class=\"block\"\n          type=\"text\"\n          name=\"price\"\n          #price=\"ngModel\"\n          [(ngModel)]=\"updatedBicycle.price\"\n          [value]=\"post.price\"\n          [placeholder]=\"post.price\">\n        </div>\n        <div class=\"\">\n\n          <label class=\"block\" for=\"location\">Location</label>\n          <input\n          class=\"block\"\n          type=\"text\"\n          name=\"location\"\n          #location=\"ngModel\"\n          [(ngModel)]=\"updatedBicycle.location\"\n          [value]=\"post.location\"\n          [placeholder]=\"post.location\">\n        </div>\n        <div id=\"edit_delete_div\">\n          <input type=\"submit\" value=\"Update\">\n          <button id=\"delete_button\" (click)=\"destroyPost(post._id, idx)\">Delete</button>\n        </div>\n\n      </div>\n    </form>\n  </section>\n\n  <footer>\n    footer\n  </footer>\n</section>\n"
+module.exports = "<h1>bicycle-listing component</h1>\n"
 
 /***/ }),
 
@@ -432,10 +432,8 @@ var ListingsComponent = (function () {
     };
     ListingsComponent.prototype.createPost = function () {
         var _this = this;
-        console.log("Inside the createPost method.");
         this.errors = [];
         this.newBicycle.user = this.currentUser;
-        console.log("newBicycle with current user:  ", this.newBicycle);
         this._postService.create(this.newBicycle, function (data) {
             if (data.errors) {
                 for (var _i = 0, _a = Object.keys(data.errors); _i < _a.length; _i++) {
@@ -454,13 +452,6 @@ var ListingsComponent = (function () {
     };
     ListingsComponent.prototype.updatePost = function (post) {
         var _this = this;
-        console.log("Inside the updatePost method: listings.component");
-        console.log(post);
-        // return this._postService.update(post)
-        // .then(bike => {
-        //   console.log(post);
-        // })
-        // .catch(err => { console.log(err) })
         return this._postService.update(post, function (data) {
             if (data.errors) {
                 console.log(data.errors);
@@ -504,7 +495,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "section {\n  padding-top: 50px;\n  padding-left: 25px;\n  padding-right: 25px;\n  padding-bottom: 25px;\n  background-color: #d7ccc8;\n}\n\n.post-box {\n  border: 10px solid #3e2723;\n  margin: 5px;\n  border-radius: 5px;\n  background-color: white;\n  padding: 20px;\n}\n", ""]);
+exports.push([module.i, "section {\n  padding-top: 50px;\n  padding-left: 25px;\n  padding-right: 25px;\n  padding-bottom: 25px;\n  background-color: #d7ccc8;\n}\n\n.post-box {\n  border: 10px solid #3e2723;\n  margin: 5px;\n  border-radius: 5px;\n  background-color: white;\n  padding: 20px;\n}\n\n#login-reg {\n  background-color: #bcaaa4;\n}\n", ""]);
 
 // exports
 
@@ -517,7 +508,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login-reg/login-reg.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <div>\n    <h1>Bike of the day!</h1>\n<div>\n\n<section>\n  <div class=\"container-fluid post-box\">\n    <div class=\"row\">\n      <div class=\"col-md-4\">\n        <img src=\"rob-bye-200735.jpg\" class=\"img-responsive img-thumbnail\" alt=\"bicycle image\">\n        <h2>{{randomBike._id}}</h2>\n      </div>\n      <div class=\"col-md-4\">\n        <h1 class=\"block\">{{randomBike.title}}</h1>\n          <p>{{randomBike.description}}</p>\n      </div>\n      <div class=\"col-md-4\">\n        <div class=\"label_input_pair\">\n          <h1>${{randomBike.price}}</h1>\n          <h3>{{randomBike.location}}</h3>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<h2>Login</h2>\n<form (submit)=\"loginUser()\">\n  <table>\n    <tr>\n      <td><label>Email:</label></td>\n      <td><input type=\"text\" name=\"email\" [(ngModel)]=\"ninja.email\"></td>\n    </tr>\n    <tr>\n      <td><label>Password:</label></td>\n      <td><input type=\"password\" name=\"password\" [(ngModel)]=\"ninja.password\"></td>\n    </tr>\n    <tr>\n      <td><input type=\"submit\" value=\"Login\"></td>\n    </tr>\n  </table>\n</form>\n\n<h2>Register</h2>\n<form (submit)=\"createUser()\">\n  <table>\n    <tr>\n      <td><label>First Name:</label></td>\n      <td><input\n        type=\"text\"\n        name=\"firstName\"\n        #firstName=\"ngModel\"\n        [(ngModel)]=\"newUser.firstName\"\n        required\n        minlength='3'\n        ><p *ngIf=\"firstName.invalid && (firstName.dirty || firstName.touched)\">First name must be at least 3 characters</p></td>\n    </tr>\n    <tr>\n      <td><label>Last Name:</label></td>\n      <td><input type=\"text\" name=\"lastName\" [(ngModel)]=\"newUser.lastName\"></td>\n    </tr>\n    <tr>\n      <td><label>Email:</label></td>\n      <td><input type=\"text\" name=\"email\" [(ngModel)]=\"newUser.email\"></td>\n    </tr>\n    <tr>\n      <td><label>Password:</label></td>\n      <td><input type=\"password\" name=\"password\" [(ngModel)]=\"newUser.password\"></td>\n    </tr>\n    <tr>\n      <td><label>Password Confirmation:</label></td>\n      <td><input type=\"password\" name=\"password_confirmation\" [(ngModel)]=\"newUser.password_confirmation\"></td>\n    </tr>\n    <tr>\n      <td><input type=\"submit\" value=\"Register\"></td>\n    </tr>\n  </table>\n</form>\n<div>\n  <p *ngFor=\"let error of errors\">{{ error }}</p>\n</div>\n"
+module.exports = "  <div>\n    <h1>Bike of the day!</h1>\n<div>\n\n<section>\n  <div class=\"container-fluid post-box\">\n    <div class=\"row\">\n      <div class=\"col-md-4\">\n        <img src=\"rob-bye-200735.jpg\" class=\"img-responsive img-thumbnail\" alt=\"bicycle image\">\n        <h2>{{randomBike._id}}</h2>\n      </div>\n      <div class=\"col-md-5\">\n        <h1 class=\"block\">{{randomBike.title}}</h1>\n          <p>{{randomBike.description}}</p>\n      </div>\n      <div class=\"col-md-3\">\n        <div class=\"label_input_pair\">\n          <h1>${{randomBike.price}}</h1>\n          <h3>{{randomBike.location}}</h3>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n<section id=\"login-reg\">\n\n    <div class=\"container\">\n      <div class=\"row\">\n\n        <div class=\"col-md-6\">\n          <h3>Login</h3>\n          <form id=\"login-form\" (submit)=\"loginUser()\">\n            <div class=\"form-group row\">\n              <label for=\"inputEmail\" class=\"col-sm-3 col-form-label\">Email</label>\n              <div class=\"col-sm-9\">\n                <input\n                type=\"email\"\n                name=\"email\"\n                class=\"form-control\"\n                id=\"inputEmail\"\n                placeholder=\"Email\"\n                [(ngModel)]=\"ninja.email\"\n                >\n              </div>\n            </div>\n            <div class=\"form-group row\">\n              <label for=\"inputPassword\" class=\"col-sm-3 col-form-label\">Password</label>\n              <div class=\"col-sm-9\">\n                <input\n                type=\"password\"\n                name=\"password\"\n                class=\"form-control\"\n                id=\"inputPassword\"\n                placeholder=\"Password\"\n                [(ngModel)]=\"ninja.password\"\n                >\n              </div>\n              <input class=\"btn btn-secondary\" type=\"submit\" value=\"Login\">\n            </div>\n          </form>\n        </div>\n\n        <div class=\"col-md-6\">\n          <h3>Register</h3>\n          <form id=\"register-form\" #myForm=\"ngForm\" (submit)=\"createUser(); myform.reset()\">\n              <div class=\"form-group row\">\n                <label for=\"inputFirstName\" class=\"col-sm-3 col-form-label\">First Name</label>\n                <div class=\"col-sm-9\">\n                  <input\n                  class=\"form-control\"\n                  id=\"inputFirstName\"\n                  type=\"text\"\n                  name=\"firstName\"\n                  #firstName=\"ngModel\"\n                  [(ngModel)]=\"newUser.firstName\"\n                  placeholder=\"First Name\"\n                  required\n                  minlength='2'>\n                </div>\n              </div>\n              <div class=\"form-group row\">\n                <label for=\"inputLastName\" class=\"col-sm-3 col-form-label\">Last Name</label>\n                <div class=\"col-sm-9\">\n                  <input\n                  class=\"form-control\"\n                  id=\"inputLastName\"\n                  type=\"text\"\n                  name=\"lastName\"\n                  #lastName=\"ngModel\"\n                  [(ngModel)]=\"newUser.lastName\"\n                  placeholder=\"Last Name\"\n                  required\n                  minlength='2'>\n                </div>\n              </div>\n              <div class=\"form-group row\">\n                <label for=\"inputEmail\" class=\"col-sm-3 col-form-label\">Email</label>\n                <div class=\"col-sm-9\">\n                  <input\n                  class=\"form-control\"\n                  id=\"inputEmail\"\n                  type=\"email\"\n                  name=\"email\"\n                  #email=\"ngModel\"\n                  [(ngModel)]=\"newUser.email\"\n                  placeholder=\"Email\"\n                  required>\n                </div>\n              </div>\n              <div class=\"form-group row\">\n                <label for=\"inputPassword\" class=\"col-sm-3 col-form-label\">Password</label>\n                <div class=\"col-sm-9\">\n                  <input\n                  class=\"form-control\"\n                  id=\"inputPassword\"\n                  type=\"password\"\n                  name=\"password\"\n                  #password=\"ngModel\"\n                  [(ngModel)]=\"newUser.password\"\n                  required\n                  minlength='8'\n                  placeholder=\"Password must be at least 8 characters\"\n                  />\n                </div>\n              </div>\n              <div class=\"form-group row\">\n                <label for=\"inputConfirmPassword\" class=\"col-sm-3 col-form-label\">Password Confirmation</label>\n                <div class=\"col-sm-9\">\n                  <input\n                  class=\"form-control\"\n                  id=\"inputConfirmPassword\"\n                  type=\"password\"\n                  name=\"password_confirmation\"\n                  #password_confirmation=\"ngModel\"\n                  [(ngModel)]=\"newUser.password_confirmation\"\n                  required\n                  placeholder=\"Password Confirmation\"\n                  />\n                </div>\n              </div>\n              <input type=\"submit\" class=\"btn btn-secondary\" value=\"Register\">\n          </form>\n          <div>\n            <p *ngFor=\"let error of errors\">{{ error }}</p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n</section>\n"
 
 /***/ }),
 
@@ -571,7 +562,6 @@ var LoginRegComponent = (function () {
             // this.posts = posts;
             var idx = Math.floor(Math.random() * posts.length);
             _this.randomBike = posts[idx];
-            console.log(_this.randomBike);
         });
     };
     LoginRegComponent.prototype.createUser = function () {
@@ -598,7 +588,7 @@ var LoginRegComponent = (function () {
         var _this = this;
         this.loginErrors = [];
         this._userService.authenticate(this.ninja, function (res) {
-            console.log(res);
+            // console.log(res);
             if (res.errors) {
                 for (var _i = 0, _a = Object.keys(res.errors); _i < _a.length; _i++) {
                     var key = _a[_i];

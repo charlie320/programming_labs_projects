@@ -9,11 +9,11 @@
         <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
         <h2>{{randomBike._id}}</h2>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <h1 class="block">{{randomBike.title}}</h1>
           <p>{{randomBike.description}}</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="label_input_pair">
           <h1>${{randomBike.price}}</h1>
           <h3>{{randomBike.location}}</h3>
@@ -23,58 +23,130 @@
   </div>
 </section>
 
-<h2>Login</h2>
-<form (submit)="loginUser()">
-  <table>
-    <tr>
-      <td><label>Email:</label></td>
-      <td><input type="text" name="email" [(ngModel)]="ninja.email"></td>
-    </tr>
-    <tr>
-      <td><label>Password:</label></td>
-      <td><input type="password" name="password" [(ngModel)]="ninja.password"></td>
-    </tr>
-    <tr>
-      <td><input type="submit" value="Login"></td>
-    </tr>
-  </table>
-</form>
 
-<h2>Register</h2>
-<form (submit)="createUser()">
-  <table>
-    <tr>
-      <td><label>First Name:</label></td>
-      <td><input
-        type="text"
-        name="firstName"
-        #firstName="ngModel"
-        [(ngModel)]="newUser.firstName"
-        required
-        minlength='3'
-        ><p *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">First name must be at least 3 characters</p></td>
-    </tr>
-    <tr>
-      <td><label>Last Name:</label></td>
-      <td><input type="text" name="lastName" [(ngModel)]="newUser.lastName"></td>
-    </tr>
-    <tr>
-      <td><label>Email:</label></td>
-      <td><input type="text" name="email" [(ngModel)]="newUser.email"></td>
-    </tr>
-    <tr>
-      <td><label>Password:</label></td>
-      <td><input type="password" name="password" [(ngModel)]="newUser.password"></td>
-    </tr>
-    <tr>
-      <td><label>Password Confirmation:</label></td>
-      <td><input type="password" name="password_confirmation" [(ngModel)]="newUser.password_confirmation"></td>
-    </tr>
-    <tr>
-      <td><input type="submit" value="Register"></td>
-    </tr>
-  </table>
-</form>
-<div>
-  <p *ngFor="let error of errors">{{ error }}</p>
-</div>
+<section id="login-reg">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3>Login</h3>
+          <form id="login-form" (submit)="loginUser()">
+            <div class="form-group row">
+              <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="inputEmail"
+                placeholder="Email"
+                [(ngModel)]="ninja.email"
+                >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="inputPassword"
+                placeholder="Password"
+                [(ngModel)]="ninja.password"
+                >
+              </div>
+              <input class="btn btn-secondary" type="submit" value="Login">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <h3>Register</h3>
+          <form id="register-form" #myForm="ngForm" (submit)="createUser(); myform.reset()">
+              <div class="form-group row">
+                <label for="inputFirstName" class="col-sm-3 col-form-label">First Name</label>
+                <div class="col-sm-9">
+                  <input
+                  class="form-control"
+                  id="inputFirstName"
+                  type="text"
+                  name="firstName"
+                  #firstName="ngModel"
+                  [(ngModel)]="newUser.firstName"
+                  placeholder="First Name"
+                  required
+                  minlength='2'>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputLastName" class="col-sm-3 col-form-label">Last Name</label>
+                <div class="col-sm-9">
+                  <input
+                  class="form-control"
+                  id="inputLastName"
+                  type="text"
+                  name="lastName"
+                  #lastName="ngModel"
+                  [(ngModel)]="newUser.lastName"
+                  placeholder="Last Name"
+                  required
+                  minlength='2'>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input
+                  class="form-control"
+                  id="inputEmail"
+                  type="email"
+                  name="email"
+                  #email="ngModel"
+                  [(ngModel)]="newUser.email"
+                  placeholder="Email"
+                  required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                  <input
+                  class="form-control"
+                  id="inputPassword"
+                  type="password"
+                  name="password"
+                  #password="ngModel"
+                  [(ngModel)]="newUser.password"
+                  required
+                  minlength='8'
+                  placeholder="Password must be at least 8 characters"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputConfirmPassword" class="col-sm-3 col-form-label">Password Confirmation</label>
+                <div class="col-sm-9">
+                  <input
+                  class="form-control"
+                  id="inputConfirmPassword"
+                  type="password"
+                  name="password_confirmation"
+                  #password_confirmation="ngModel"
+                  [(ngModel)]="newUser.password_confirmation"
+                  required
+                  placeholder="Password Confirmation"
+                  />
+                </div>
+              </div>
+              <input type="submit" class="btn btn-secondary" value="Register">
+          </form>
+          <div>
+            <p *ngFor="let error of errors">{{ error }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>

@@ -38,7 +38,6 @@ export class LoginRegComponent implements OnInit {
       // this.posts = posts;
       var idx = Math.floor(Math.random() * posts.length);
       this.randomBike = posts[idx];
-      console.log(this.randomBike);
     });
   }
 
@@ -66,7 +65,7 @@ export class LoginRegComponent implements OnInit {
   loginUser() {
     this.loginErrors = [];
     this._userService.authenticate(this.ninja, (res) => {
-      console.log(res);
+      // console.log(res);
       if (res.errors) {
         for (const key of Object.keys(res.errors)) {
           const error = res.errors[key];

@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 
-<section class="create-listing">
-  <div class="container-fluid">
+<section id="create-listing">
+  <div class="container-fluid post-box">
     <h1>Create Listing</h1>
     <form class="create-form" #myForm="ngForm" (ngSubmit)="createPost(); myForm.reset()">
 
@@ -71,80 +71,84 @@
 
 
 
+<section class="container-fluid" id="update-listings">
+  <h1>Edit/Delete Listings</h1>
+  <div class="" *ngFor="let post of postsOwner.posts; let idx = index">
+    <div class="container-fluid post-box">
+      <form class="update-form" #myForm="ngForm" (ngSubmit)="updatePost(post); myForm.reset()">
 
-<h1>Edit/Delete Listing</h1>
-<section class="update-listing" *ngFor="let post of postsOwner.posts; let idx = index">
-  <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4" style="background-color=#ef9a9a">
+            <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
+          </div>
 
-    <form class="update-form" #myForm="ngForm" (ngSubmit)="updatePost(post); myForm.reset()">
+          <div class="col-md-5" style="background-color=#f48fb1">
+            <div class="form-group col-md-8">
+              <label for="inputTitle4">Title</label>
+              <input
+              type="text"
+              class="form-control"
+              id="inputTitle4"
+              name="title"
+              #title="ngModel"
+              [(ngModel)]="post.title"
+              [value]="post.title"
+              [placeholder]="post.title"
+              />
+            </div>
+            <div class="form-group col-md-10">
+              <label for="inputDescription">Description</label>
+              <textarea
+              class="form-control"
+              id="inputDescription"
+              name="description"
+              #description="ngModel"
+              [(ngModel)]="post.description"
+              [value]="post.description"
+              [placeholder]="post.description"
+              >
+              </textarea>
+            </div>
+          </div>
 
-      <div class="row">
-        <div class="col-md-4" style="background-color=#ef9a9a">
-          <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
+          <div class="col-md-3" style="background-color=#ba68c8">
+            <div class="form-group col-md-6">
+              <label for="inputPrice4">Price</label>
+              <input
+              type="text"
+              class="form-control"
+              id="inputPrice4"
+              name="price"
+              #price="ngModel"
+              [(ngModel)]="post.price"
+              [value]="post.price"
+              [placeholder]="post.price"
+              >
+            </div>
+            <div class="form-group col-md-9">
+              <label for="inputLocation4">Location</label>
+              <input
+              type="text"
+              class="form-control"
+              id="inputLocation4"
+              name="location"
+              #location="ngModel"
+              [(ngModel)]="post.location"
+              [value]="post.location"
+              [placeholder]="post.location"
+              >
+            </div>
+            <div id="edit_delete_div">
+              <input type="submit" class="btn btn-primary" value="Update">
+              <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
+            </div>
+          </div>
         </div>
-
-        <div class="col-md-5" style="background-color=#f48fb1">
-          <div class="form-group col-md-8">
-            <label for="inputTitle4">Title</label>
-            <input
-            type="text"
-            class="form-control"
-            id="inputTitle4"
-            name="title"
-            #title="ngModel"
-            [(ngModel)]="post.title"
-            [value]="post.title"
-            [placeholder]="post.title"
-            />
-          </div>
-          <div class="form-group col-md-10">
-            <label for="inputDescription">Description</label>
-            <textarea
-            class="form-control"
-            id="inputDescription"
-            name="description"
-            #description="ngModel"
-            [(ngModel)]="post.description"
-            [value]="post.description"
-            [placeholder]="post.description"
-            >
-            </textarea>
-          </div>
-        </div>
-
-        <div class="col-md-3" style="background-color=#ba68c8">
-          <div class="form-group col-md-6">
-            <label for="inputPrice4">Price</label>
-            <input
-            type="text"
-            class="form-control"
-            id="inputPrice4"
-            name="price"
-            #price="ngModel"
-            [(ngModel)]="post.price"
-            [value]="post.price"
-            [placeholder]="post.price"
-            >
-          </div>
-          <div class="form-group col-md-9">
-            <label for="inputLocation4">Location</label>
-            <input
-            type="text"
-            class="form-control"
-            id="inputLocation4"
-            name="location"
-            #location="ngModel"
-            [(ngModel)]="post.location"
-            [value]="post.location"
-            [placeholder]="post.location"
-            >
-          </div>
-          <div id="edit_delete_div">
-            <input type="submit" class="btn btn-primary" value="Update">
-            <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
-          </div>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
+
+
+
+
 </section>

@@ -7,7 +7,8 @@ const User = mongoose.model('User');
 class PostsController {
   index(req, res){
     // Post.find({}, (err, Posts) => {
-    Post.find({}).sort('name').exec((err, posts) => {
+    // Post.find({}).sort('name').exec((err, posts) => {
+    Post.find({}).sort('name').populate({ path: 'user', model: 'User' }).exec((err, posts) => {    
       if(err){
         return res.json(err);
       }

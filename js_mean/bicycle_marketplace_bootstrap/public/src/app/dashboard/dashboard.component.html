@@ -17,8 +17,8 @@
           <h3>{{post.location}}</h3>
         </div>
         <div id="edit_delete_div">
-          <button class="btn btn-info">Contact</button>          
-          <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
+          <a *ngIf="currentUser._id != post.user._id" class="btn btn-info" href="mailto:{{post.user.email}}">Contact</a>
+          <button *ngIf="currentUser._id == post.user._id" class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
         </div>
       </div>
     </div>

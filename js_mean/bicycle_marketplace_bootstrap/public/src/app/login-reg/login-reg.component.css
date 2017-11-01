@@ -1,0 +1,15 @@
+section {
+  padding-top: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  background-color: #d7ccc8;
+}
+
+.post-box {
+  border: 10px solid #3e2723;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+}

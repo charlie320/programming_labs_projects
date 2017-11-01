@@ -3,3 +3,24 @@ button {
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.post-box {
+  border: 8px solid #3e2723;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+}
+
+#update-listings {
+  background-color: #795548;
+  padding: 20px;
+  border: 5px solid #d7ccc8;
+}
+
+#create-listing {
+  background-color: #795548;
+  padding: 20px;
+  border: 5px solid #d7ccc8;
+  margin-bottom: 15px;
+}

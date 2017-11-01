@@ -1,7 +1,9 @@
 import { UserService } from './../user.service';
+import { PostService } from './../post.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-login-reg',
@@ -11,25 +13,33 @@ import { User } from '../user';
 
 export class LoginRegComponent implements OnInit {
 
-  // ninja: User = new User();
-  // newUser: User = new User();
-  // errors: string[] = [];
-
   newUser: User = new User();
   ninja: User = new User();
   registrationErrors: string[] = [];
   loginErrors: string[] = [];
+  posts = [];
+  randomBike: Post = new Post();
 
   constructor(
     private _userService: UserService,
-    private _router: Router
+    private _router: Router,
+    private _postService: PostService
   ) { }
 
   ngOnInit() {
-    this.ninja.email = 'john@doe.com'
-    this.ninja.password = 'john1234'
-    this.loginUser();
+    // this.ninja.email = 'john@doe.com'
+    // this.ninja.password = 'john1234'
+    // this.loginUser();
+    this.getRandomBike();
+  }
 
+  getRandomBike() {
+    this._postService.index(posts => {
+      // this.posts = posts;
+      var idx = Math.floor(Math.random() * posts.length);
+      this.randomBike = posts[idx];
+      console.log(this.randomBike);
+    });
   }
 
   createUser() {

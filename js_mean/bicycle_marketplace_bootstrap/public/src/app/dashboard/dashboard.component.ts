@@ -31,17 +31,17 @@ export class DashboardComponent implements OnInit {
       }
     });
     this.getPosts();
-    this.getPostsByUser();
   }
 
   getPosts(){
     this._postService.index(posts => this.posts = posts);
   }
 
-  getPostsByUser(){
-    this._userService.getPosts((res) => {
-      this.currentUser = res;
-    })
+  destroyPost(id: string, idx: number) {
+    this._postService.destroy(id, res => {
+      this.posts.splice(idx,1);
+    });
+    this.getPosts();
   }
 
   logout(){

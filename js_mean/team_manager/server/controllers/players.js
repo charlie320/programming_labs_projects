@@ -5,7 +5,6 @@ const Player = mongoose.model('Player');
 
 class PlayersController {
   index(req, res){
-    console.log("In the index method.");
     // Player.find({}, (err, Players) => {
     Player.find({}).sort('name').exec((err, players) => {
       if(err){
@@ -34,7 +33,6 @@ class PlayersController {
   }
 
   update(req, res){
-    console.log("Inside the server update method.");
     Player.findByIdAndUpdate(req.params.id, { $set : req.body }, { runValidators: true, new: true }, (err, player) => {
       if(err){
         return res.json(err);

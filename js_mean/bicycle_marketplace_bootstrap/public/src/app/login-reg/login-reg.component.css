@@ -7,9 +7,9 @@ section {
 }
 
 .post-box {
-  border: 10px solid #3e2723;
+  border: 3px solid #3e2723;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: white;
   padding: 20px;
 }

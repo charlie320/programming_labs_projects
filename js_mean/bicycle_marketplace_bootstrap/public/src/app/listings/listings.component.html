@@ -7,7 +7,7 @@
 
       <div class="row">
         <div class="col-md-4" style="background-color=#ef9a9a">
-          <img src="rob-bye-200735.jpg" class="img-responsive img-thumbnail" alt="bicycle image">
+          <img src="" class="img-responsive img-thumbnail" alt="Add bicycle photo after listing.">
         </div>
 
         <div class="col-md-5" style="background-color=#f48fb1">
@@ -62,7 +62,7 @@
             placeholder="Location"
             >
           </div>
-          <button type="submit" class="btn btn-info">Create</button>
+          <button type="submit" class="btn btn-success">Create</button>
         </div>
       </div>
     </form>
@@ -78,17 +78,20 @@
 
         <div class="row">
           <div class="col-md-4" style="background-color=#ef9a9a">
-          <p>{{post._id}}</p>
             <form
             class="form-group"
             #myOtherForm="ngForm"
             (submit)="sendUpload(post._id); myOtherForm.reset()">
-              <img src="{{post.photo}}" class="img-responsive img-thumbnail" alt="bicycle image">
-              <input type="file" name="photo" ng2FileSelect [uploader]="uploader">
+              <img src="{{post.photo}}" class="img-responsive img-thumbnail" alt="Bicycle photo goes here">
+
+              <input type="file" class="btn btn-secondary" name="photo" ng2FileSelect [uploader]="uploader">
               <input
               type="submit"
+              id="add-update-submit"
+              class="btn btn-secondary"
               value="Add/Update Photo"
               [disabled]="!uploader.getNotUploadedItems().length">
+
             </form>
           </div>
 
@@ -149,7 +152,7 @@
               >
             </div>
             <div id="edit_delete_div">
-              <input type="submit" class="btn btn-info" value="Update">
+              <input type="submit" class="btn btn-success" value="Update">
               <button class="btn btn-danger" (click)="destroyPost(post._id, idx)">Delete</button>
             </div>
           </div>

@@ -80,7 +80,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    {{title}}\n  </h1>\n</div>\n\n<router-outlet></router-outlet>\n<footer>\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <p>&copy; 2017 Jesus C. de la Rosa<p>\n        <p>Created using MEAN stack</p>\n      <p>This site is part of a portfolio and is for demonstration purposes only.  Please do not submit any private personal information.</p>\n      <p> Images courtesy of</p>\n      <p>Eddy Lackmann, Rob Bye, Maria Soledad, Carl Nenzen Loven & Matt Saling</p>\n      <p>and may be found on Unsplash.com</p>\n    </div>\n  </div>\n\n</div>\n</footer>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    {{title}}\n  </h1>\n</div>\n\n<router-outlet></router-outlet>\n<footer>\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <p>&copy; 2017 by Jesus C. de la Rosa<p>\n        <p>Created using MEAN stack and Bootstrap front-end library</p>\n      <p>This site is for demonstration purposes only.  Please do not submit any private personal information.</p>\n      <p> Images courtesy of</p>\n      <p>Eddy Lackmann, Rob Bye, Maria Soledad, Carl Nenzen Loven & Matt Saling</p>\n      <p>and provided through Unsplash.com</p>\n    </div>\n  </div>\n\n</div>\n</footer>\n"
 
 /***/ }),
 

@@ -14,7 +14,7 @@
       </div>
       <div class="col-md-3">
         <div class="label_input_pair">
-          <h1>${{randomBike.price}}</h1>
+          <h1 >{{randomBike.price | currency:"USD":2 }}</h1>
           <h3>{{randomBike.location}}</h3>
         </div>
       </div>

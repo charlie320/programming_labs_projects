@@ -7,9 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: PlayerListComponent },
-  // { path: 'list', pathMatch: 'full', component: PlayerListComponent },
-  { path: 'new', pathMatch: 'full', component: PlayerNewComponent },
-  { path: 'status', pathMatch: 'full', component: PlayerStatusComponent },
+  { path: 'new', component: PlayerNewComponent },
+  { path: 'status', component: PlayerStatusComponent },
   ];
 
 @NgModule({

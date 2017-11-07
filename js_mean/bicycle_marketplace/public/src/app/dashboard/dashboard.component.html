@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-4">
         <div class="label_input_pair">
-          <h1>${{post.price}}</h1>
+          <h1>{{post.price | currency:"USD":2}}</h1>
           <h3>{{post.location}}</h3>
         </div>
         <div id="edit_delete_div">

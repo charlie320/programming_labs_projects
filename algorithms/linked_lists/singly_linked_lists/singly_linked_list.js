@@ -91,6 +91,23 @@ SinglyList.prototype.remove = function(position) {
     return deletedNode;
 };
 
+SinglyList.prototype.contains = function(val) {
+  var currentNode = this.head;
+  if (currentNode == null) {
+    return false;
+  }
+  if (currentNode.val == val) {
+    return true;
+  }
+  while (currentNode.next) {
+    currentNode = currentNode.next;
+    if (currentNode.val == val) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 var myList = new SinglyList();
 myList.add(12);
@@ -106,15 +123,18 @@ myList.add(55);
 // myList.remove(1);
 // console.log(myList.head);
 
+console.log(myList.contains(56));
 
-function printList(myList) {
-  currentNode = myList.head;
-  while (currentNode.next) {
-    console.log(currentNode.val);
-    currentNode = currentNode.next;
-  }
-  console.log(currentNode.val);
-  return myList;
-}
 
-console.log(printList(myList));
+// function printList(myList) {
+//   currentNode = myList.head;
+//   while (currentNode.next) {
+//     console.log(currentNode.val);
+//     currentNode = currentNode.next;
+//   }
+//   console.log(currentNode.val);
+//   return myList;
+// }
+//
+//
+// console.log(printList(myList));

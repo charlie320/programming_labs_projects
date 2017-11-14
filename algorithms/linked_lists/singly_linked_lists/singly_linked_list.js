@@ -108,13 +108,16 @@ SinglyList.prototype.contains = function(val) {
   return false;
 }
 
-
 var myList = new SinglyList();
 myList.add(12);
 myList.add(24);
 myList.add(34);
 myList.add(20);
 myList.add(55);
+
+var myEmptyList = new SinglyList();
+var mySingleList = new SinglyList();
+mySingleList.add(15);
 // console.log(myList._length);
 // console.log(myList.head);
 // console.log(myList.searchNodeAt(1));
@@ -123,7 +126,9 @@ myList.add(55);
 // myList.remove(1);
 // console.log(myList.head);
 
-console.log(myList.contains(56));
+console.log(myList.contains(12));
+// console.log(myEmptyList.contains(12));
+// console.log(mySingleList.contains(16));
 
 
 // function printList(myList) {

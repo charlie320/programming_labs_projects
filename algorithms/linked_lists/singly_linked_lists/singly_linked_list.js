@@ -124,6 +124,22 @@ SinglyList.prototype.max = function() {
   return max;
 }
 
+SinglyList.prototype.min = function() {
+  var currentNode = this.head;
+  var min;
+  if (currentNode.next == null) {
+    return currentNode.val;
+  }
+  min = currentNode.val;
+  while (currentNode.next) {
+    if(currentNode.next.val < min) {
+      min = currentNode.next.val;
+    }
+  currentNode = currentNode.next;
+  }
+  return min;
+}
+
 var myList = new SinglyList();
 myList.add(12);
 myList.add(24);
@@ -135,8 +151,8 @@ myList.add(75);
 
 // var myEmptyList = new SinglyList();
 // var mySingleList = new SinglyList();
-
 console.log(myList.max());
+console.log(myList.min());
 
 // mySingleList.add(15);
 // console.log(myList._length);

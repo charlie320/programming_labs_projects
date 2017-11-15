@@ -108,16 +108,37 @@ SinglyList.prototype.contains = function(val) {
   return false;
 }
 
+SinglyList.prototype.max = function() {
+  var currentNode = this.head;
+  var max;
+  if (currentNode.next == null) {
+    return currentNode.val;
+  }
+  max = currentNode.val;
+  while (currentNode.next) {
+    if(currentNode.next.val > max) {
+      max = currentNode.next.val;
+    }
+  currentNode = currentNode.next;
+  }
+  return max;
+}
+
 var myList = new SinglyList();
 myList.add(12);
 myList.add(24);
+myList.add(55);
 myList.add(34);
 myList.add(20);
-myList.add(55);
+myList.add(75);
 
-var myEmptyList = new SinglyList();
-var mySingleList = new SinglyList();
-mySingleList.add(15);
+
+// var myEmptyList = new SinglyList();
+// var mySingleList = new SinglyList();
+
+console.log(myList.max());
+
+// mySingleList.add(15);
 // console.log(myList._length);
 // console.log(myList.head);
 // console.log(myList.searchNodeAt(1));
@@ -126,7 +147,7 @@ mySingleList.add(15);
 // myList.remove(1);
 // console.log(myList.head);
 
-console.log(myList.contains(12));
+// console.log(myList.contains(12));
 // console.log(myEmptyList.contains(12));
 // console.log(mySingleList.contains(16));
 

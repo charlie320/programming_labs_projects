@@ -10,7 +10,7 @@ function SinglyList() {
 
 SinglyList.prototype.add = function(value) {
     var node = new Node(value),
-        currentNode = this.head;
+    currentNode = this.head;
 
     // 1st use-case: an empty list
     if (!currentNode) {
@@ -55,7 +55,7 @@ SinglyList.prototype.searchNodeAt = function(position) {
 SinglyList.prototype.remove = function(position) {
     var currentNode = this.head,
         length = this._length,
-        count = 0,
+        count = 1,
         message = {failure: 'Failure: non-existent node in this list.'},
         beforeNodeToDelete = null,
         nodeToDelete = null,
@@ -80,6 +80,7 @@ SinglyList.prototype.remove = function(position) {
     while (count < position) {
         beforeNodeToDelete = currentNode;
         nodeToDelete = currentNode.next;
+        currentNode = currentNode.next;
         count++;
     }
 
@@ -151,8 +152,8 @@ myList.add(75);
 
 // var myEmptyList = new SinglyList();
 // var mySingleList = new SinglyList();
-console.log(myList.max());
-console.log(myList.min());
+// console.log(myList.max());
+// console.log(myList.min());
 
 // mySingleList.add(15);
 // console.log(myList._length);
@@ -168,15 +169,18 @@ console.log(myList.min());
 // console.log(mySingleList.contains(16));
 
 
-// function printList(myList) {
-//   currentNode = myList.head;
-//   while (currentNode.next) {
-//     console.log(currentNode.val);
-//     currentNode = currentNode.next;
-//   }
-//   console.log(currentNode.val);
-//   return myList;
-// }
-//
-//
-// console.log(printList(myList));
+function printList(myList) {
+  currentNode = myList.head;
+  while (currentNode.next) {
+    console.log(currentNode.val);
+    currentNode = currentNode.next;
+  }
+  console.log(currentNode.val);
+  return myList;
+}
+
+printList(myList);
+console.log();
+myList.remove(4);
+console.log();
+printList(myList);

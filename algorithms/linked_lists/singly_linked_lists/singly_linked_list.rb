@@ -34,7 +34,7 @@ class SinglyList
     currentNode.next = node
 
     @_length += 1
-    
+
     return node
   end
 

@@ -28,6 +28,8 @@ class SinglyList(object):
         return node
 
     def printList(self):
+        if not self.head:
+            return self
         currentNode = self.head
         while currentNode.next:
             print currentNode.val
@@ -59,12 +61,12 @@ class SinglyList(object):
         count = 1
         message = {'failure' : 'Failure: non-existent node in this list.'}
         beforeNodeToDelete = None
-        noedToDelete = None
+        nodeToDelete = None
         deletedNode = None
 
         # 1st use-case: an invalid position
         if position < 0 or position > length:
-            raise ValueError('Failure: non-existent node in this list.')
+            # raise ValueError('Failure: non-existent node in this list.')
             return message['failure']
 
         # 2nd use-case: the first node is removed

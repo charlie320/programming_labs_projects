@@ -170,6 +170,10 @@ myList.add(75);
 
 
 function printList(myList) {
+  if (!myList.head) {
+    return myList;
+  }
+
   currentNode = myList.head;
   while (currentNode.next) {
     console.log(currentNode.val);

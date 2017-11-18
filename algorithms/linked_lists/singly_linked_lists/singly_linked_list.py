@@ -91,6 +91,37 @@ class SinglyList(object):
 
         return deletedNode.val
 
+    def max(self):
+        currentNode = self.head
+        max = currentNode.val
+
+        # Check for empty list or single-node list
+        if currentNode.next == None:
+            return currentNode
+
+        # Check for max on lists longer than 1 node
+        while currentNode.next:
+            if currentNode.next.val > max:
+                max = currentNode.next.val
+            currentNode = currentNode.next
+        return max
+
+    def min(self):
+        currentNode = self.head
+        min = currentNode.val
+
+        # Check for empty list or single-node list
+        if currentNode.next == None:
+            return currentNode
+
+        # Check for max on lists longer than 1 node
+        while currentNode.next:
+            if currentNode.next.val < min:
+                min = currentNode.next.val
+            currentNode = currentNode.next
+        return min
+# end of SinglyList class
+
 myList = SinglyList()
 myList.add(12)
 myList.add(24)
@@ -99,6 +130,6 @@ myList.add(34)
 myList.add(20)
 myList.add(75)
 
-myList.printList()
-print(myList.remove(5))
-myList.printList()
+
+print "Max = {}".format(myList.max())
+print "Min = {}".format(myList.min())

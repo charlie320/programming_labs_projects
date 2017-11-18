@@ -38,6 +38,9 @@ class SinglyList
     return node
   end
 
+  def printList(myList)
+    
+  end
 end
 
 

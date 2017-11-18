@@ -27,14 +27,14 @@ class SinglyList(object):
 
         return node
 
-    def printList(myList):
-        currentNode = myList.head
+    def printList(self):
+        currentNode = self.head
         while currentNode.next:
             print currentNode.val
             currentNode = currentNode.next
 
         print currentNode.val
-        return myList
+        return self
 
     def searchNodeAt(self,position):
         currentNode = self.head
@@ -87,7 +87,7 @@ class SinglyList(object):
         nodeToDelete = None
         self._length -= 1
 
-        return deletedNode
+        return deletedNode.val
 
 myList = SinglyList()
 myList.add(12)

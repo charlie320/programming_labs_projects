@@ -120,7 +120,7 @@ SinglyList.prototype.max = function() {
     if(currentNode.next.val > max) {
       max = currentNode.next.val;
     }
-  currentNode = currentNode.next;
+    currentNode = currentNode.next;
   }
   return max;
 }

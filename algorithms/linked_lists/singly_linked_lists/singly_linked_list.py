@@ -93,13 +93,13 @@ class SinglyList(object):
 
     def max(self):
         currentNode = self.head
-        max = currentNode.val
 
         # Check for empty list or single-node list
         if currentNode.next == None:
             return currentNode
 
         # Check for max on lists longer than 1 node
+        max = currentNode.val
         while currentNode.next:
             if currentNode.next.val > max:
                 max = currentNode.next.val
@@ -108,18 +108,37 @@ class SinglyList(object):
 
     def min(self):
         currentNode = self.head
-        min = currentNode.val
 
         # Check for empty list or single-node list
         if currentNode.next == None:
             return currentNode
 
         # Check for max on lists longer than 1 node
+        min = currentNode.val        
         while currentNode.next:
             if currentNode.next.val < min:
                 min = currentNode.next.val
             currentNode = currentNode.next
         return min
+
+    def contains(self,value):
+        currentNode = self.head
+
+        # Check for empty list
+        if currentNode == None:
+            return False
+
+        # Check for fist node
+        if currentNode.val == value:
+            return True
+
+        # Check for remainder of list of multi-node list
+        while currentNode.next:
+            currentNode = currentNode.next
+            if currentNode.val == value:
+                return True
+
+        return False
 # end of SinglyList class
 
 myList = SinglyList()
@@ -131,5 +150,7 @@ myList.add(20)
 myList.add(75)
 
 
-print "Max = {}".format(myList.max())
-print "Min = {}".format(myList.min())
+# print "Max = {}".format(myList.max())
+# print "Min = {}".format(myList.min())
+
+print myList.contains(13)

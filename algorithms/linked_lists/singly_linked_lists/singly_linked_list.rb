@@ -111,7 +111,46 @@ class SinglyList
     return deletedNode.val
   end
 
-end
+
+  def max()
+    currentNode = @head
+
+    # Check for empty list
+    if currentNode == nil
+      return currentNode
+    end
+
+    # Check for max
+    max = currentNode.val
+    while currentNode.next
+      if currentNode.next.val > max
+        max = currentNode.next.val
+      end
+      currentNode = currentNode.next
+    end
+    return max
+  end
+
+  def min()
+    currentNode = @head
+
+    # Check for empty list
+    if currentNode == nil
+      return currentNode
+    end
+
+    # Check for max
+    min = currentNode.val
+    while currentNode.next
+      if currentNode.next.val < min
+        min = currentNode.next.val
+      end
+      currentNode = currentNode.next
+    end
+    return min
+  end
+
+end # end of SinglyList class
 
 myList = SinglyList.new()
 myList.add(12)
@@ -121,6 +160,5 @@ myList.add(34)
 myList.add(20)
 myList.add(75)
 
-myList.printList()
-p(myList.remove(1))
-myList.printList()
+p(myList.max())
+p(myList.min())

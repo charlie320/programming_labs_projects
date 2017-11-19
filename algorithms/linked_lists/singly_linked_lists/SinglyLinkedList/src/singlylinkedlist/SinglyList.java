@@ -5,6 +5,8 @@
  */
 package singlylinkedlist;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Charlie
@@ -12,16 +14,13 @@ package singlylinkedlist;
 public class SinglyList {
     public Node head;
     public Node node;
-    public Node currentNode;
     public int _length = 0;
-    public int max;
-    public int min;
 
     // We will use no-argument constructor for all instances
 
     public Node add(int value) {
       node = new Node(value);
-      currentNode = this.head;
+      Node currentNode = this.head;
 
       // 1st use-case: an empty list
       if (currentNode == null) {
@@ -45,7 +44,7 @@ public class SinglyList {
         return this;
       }
 
-      currentNode = this.head;
+      Node currentNode = this.head;
       while (currentNode.next != null) {
         System.out.println(currentNode.val);
         currentNode = currentNode.next;
@@ -55,38 +54,57 @@ public class SinglyList {
     }
 
     public int max() {
-      currentNode = this.head;
+      Node currentNode = this.head;
 
       // Empty list or single node
       if (currentNode.next == null) {
         return currentNode.val;
       }
 
-     max = currentNode.val;
+     int max = currentNode.val;
      while (currentNode.next != null) {
        if (currentNode.next.val > max) {
          max = currentNode.next.val;
        }
-       currentNode = currentNode.next;       
+       currentNode = currentNode.next;
      }
       return max;
     }
-    
+
     public int min() {
-      currentNode = this.head;
+      Node currentNode = this.head;
 
       // Empty list or single node
       if (currentNode.next == null) {
         return currentNode.val;
       }
 
-     min = currentNode.val;
+     int min = currentNode.val;
      while (currentNode.next != null) {
        if (currentNode.next.val < min) {
          min = currentNode.next.val;
        }
-       currentNode = currentNode.next;       
+       currentNode = currentNode.next;
      }
       return min;
-    }    
+    }
+
+    public int searchNodeAt(int position) {
+      Node currentNode = this.head;
+      int length = this._length;
+      int count = 1;
+      HashMap<String, String> message = new HashMap<>();
+      message.put("failure","Failure: non-existent node in this list.");
+      
+      if (length == 0 || position < 1 || position > length){
+        System.out.println(message.get("failure"));
+        return -1;
+      }
+      while (count < position) {
+          currentNode = currentNode.next;
+          count++;
+      }
+      return currentNode.val;
+    }  
+      
 } // end of SinglyList class

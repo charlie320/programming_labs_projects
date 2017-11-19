@@ -15,7 +15,8 @@ public class SinglyLinkedList {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SinglyList myList = new SinglyList();        
+        SinglyList myList = new SinglyList();
+        myList.add(12);
         myList.add(24);
         myList.add(55);
         myList.add(34);
@@ -23,7 +24,8 @@ public class SinglyLinkedList {
         myList.add(75);
         
         System.out.println(myList.max());
-        System.out.println(myList.min());        
+        System.out.println(myList.min());      
+        System.out.println(myList.searchNodeAt(3));
+        System.out.println(myList.head.val);        
     }
-    
 }

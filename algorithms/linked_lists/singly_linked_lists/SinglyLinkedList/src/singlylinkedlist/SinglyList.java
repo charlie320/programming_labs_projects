@@ -53,6 +53,66 @@ public class SinglyList {
       return this;
     }
 
+    public boolean contains(int value) {
+        Node currentNode = this.head;
+        
+        // Check for empty list
+        if (currentNode == null){
+            return false;
+        }
+        // Check for first node
+        if (this.head.val == value) {
+            return true;
+        }
+        // Check for remainder of list of multi-node list
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+            if (currentNode.val == value) {
+                return true;
+            }
+        }
+      return false;
+    }
+
+    public int remove(int position) {
+        Node currentNode = this.head;
+        int length = this._length;
+        int count = 1;
+        HashMap<String, String> message = new HashMap<>();
+        message.put("failure","Failure: non-existent node in this list.");
+        Node beforeNodeToDelete = null;
+        Node nodeToDelete = null;
+        Node deletedNode;
+
+        // 1st use-case: an invalid position
+        if (position < 1 || position > length) {
+          System.out.println(message);
+          return -1;
+        }
+        // 2nd use-case: the first node is removed
+        if (position == 1) {
+          this.head = currentNode.next;
+          deletedNode = currentNode;
+          currentNode = null;
+          this._length--;
+          return deletedNode.val;
+        }
+        // 3rd use-case: any other node is removed
+        while (count < position) {
+          beforeNodeToDelete = currentNode;
+          nodeToDelete = currentNode.next;
+          currentNode = currentNode.next;
+          count++;
+        }
+
+        beforeNodeToDelete.next = nodeToDelete.next;
+        deletedNode = nodeToDelete;
+        nodeToDelete = null;
+        this._length--;
+
+        return deletedNode.val;
+    }
+
     public int max() {
       Node currentNode = this.head;
 
@@ -95,7 +155,7 @@ public class SinglyList {
       int count = 1;
       HashMap<String, String> message = new HashMap<>();
       message.put("failure","Failure: non-existent node in this list.");
-      
+
       if (length == 0 || position < 1 || position > length){
         System.out.println(message.get("failure"));
         return -1;
@@ -105,6 +165,6 @@ public class SinglyList {
           count++;
       }
       return currentNode.val;
-    }  
-      
+    }
+
 } // end of SinglyList class

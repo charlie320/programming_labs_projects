@@ -65,7 +65,7 @@ class SinglyList(object):
         deletedNode = None
 
         # 1st use-case: an invalid position
-        if position < 0 or position > length:
+        if position < 1 or position > length:
             # raise ValueError('Failure: non-existent node in this list.')
             return message['failure']
 
@@ -75,7 +75,7 @@ class SinglyList(object):
             deletedNode = currentNode
             currentNode = None
             self._length -= 1
-            return deletedNode
+            return deletedNode.val
 
         # 3rd use-case: any other node is removed
         while count < position:
@@ -114,7 +114,7 @@ class SinglyList(object):
             return currentNode
 
         # Check for max on lists longer than 1 node
-        min = currentNode.val        
+        min = currentNode.val
         while currentNode.next:
             if currentNode.next.val < min:
                 min = currentNode.next.val
@@ -128,7 +128,7 @@ class SinglyList(object):
         if currentNode == None:
             return False
 
-        # Check for fist node
+        # Check for first node
         if currentNode.val == value:
             return True
 

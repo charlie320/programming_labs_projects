@@ -22,10 +22,16 @@ public class SinglyLinkedList {
         myList.add(34);
         myList.add(20);
         myList.add(75);
+
+//        System.out.println(myList.max());
+//        System.out.println(myList.min());      
+//        System.out.println(myList.searchNodeAt(3));
+//
+//        myList.printList();
+//        myList.remove(3);
+//        myList.printList();
+
+        System.out.println(myList.contains(75));
         
-        System.out.println(myList.max());
-        System.out.println(myList.min());      
-        System.out.println(myList.searchNodeAt(3));
-        System.out.println(myList.head.val);        
     }
 }

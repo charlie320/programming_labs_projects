@@ -14,6 +14,8 @@ public class SinglyList {
     public Node node;
     public Node currentNode;
     public int _length = 0;
+    public int max;
+    public int min;
 
     // We will use no-argument constructor for all instances
 
@@ -51,4 +53,40 @@ public class SinglyList {
       System.out.println(currentNode.val);
       return this;
     }
+
+    public int max() {
+      currentNode = this.head;
+
+      // Empty list or single node
+      if (currentNode.next == null) {
+        return currentNode.val;
+      }
+
+     max = currentNode.val;
+     while (currentNode.next != null) {
+       if (currentNode.next.val > max) {
+         max = currentNode.next.val;
+       }
+       currentNode = currentNode.next;       
+     }
+      return max;
+    }
+    
+    public int min() {
+      currentNode = this.head;
+
+      // Empty list or single node
+      if (currentNode.next == null) {
+        return currentNode.val;
+      }
+
+     min = currentNode.val;
+     while (currentNode.next != null) {
+       if (currentNode.next.val < min) {
+         min = currentNode.next.val;
+       }
+       currentNode = currentNode.next;       
+     }
+      return min;
+    }    
 } // end of SinglyList class

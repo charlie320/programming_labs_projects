@@ -22,7 +22,8 @@ public class SinglyLinkedList {
         myList.add(20);
         myList.add(75);
         
-        System.out.println(myList.printList());
+        System.out.println(myList.max());
+        System.out.println(myList.min());        
     }
     
 }

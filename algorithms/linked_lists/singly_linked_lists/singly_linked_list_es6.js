@@ -84,6 +84,65 @@ class SinglyList {
     }
     return this;
   }
+
+  searchNodeAt(position) {
+    let currentNode = this.head;
+    let length = this._length;
+    let count = 1;
+    let message = {failure: 'Failure: non-existent node in this list.'}
+
+    // 1st use-case: an invalid position
+    if (position < 1 || position > length) {
+      return message.failure;
+    }
+    // 2nd use-case: a valid position
+    while (count < position) {
+      currentNode = currentNode.next;
+      count++;
+    }
+
+    return currentNode;
+  }
+
+  contains(value) {
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.val == value) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
+
+  max() {
+    let currentNode = this.head;
+    let max = currentNode.val;
+    currentNode = currentNode.next;
+
+    while (currentNode) {
+      if (currentNode.val > max) {
+        max = currentNode.val;
+      }
+      currentNode = currentNode.next;
+    }
+    return max;
+  }
+
+  min() {
+    let currentNode = this.head;
+    let min = currentNode.val;
+    currentNode = currentNode.next;
+
+    while (currentNode) {
+      if (currentNode.val < min) {
+        min = currentNode.val;
+      }
+      currentNode = currentNode.next;
+    }
+    return min;
+  }
 } // End of SinglyList class
 
 var myNode = new Node(12);
@@ -95,6 +154,5 @@ myList.add(34);
 myList.add(20);
 myList.add(75);
 
-myList.printList();
-console.log(myList.remove(6));
-myList.printList();
+console.log(myList.max());
+console.log(myList.min());

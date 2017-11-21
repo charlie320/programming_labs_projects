@@ -10,7 +10,7 @@ function SinglyList() {
 
 SinglyList.prototype.add = function(value) {
     var node = new Node(value),
-    currentNode = this.head;
+    var currentNode = this.head;
 
     // 1st use-case: an empty list
     if (!currentNode) {
@@ -29,7 +29,7 @@ SinglyList.prototype.add = function(value) {
 
     this._length++;
 
-    return node;
+    return this;
 };
 
 SinglyList.prototype.searchNodeAt = function(position) {
@@ -54,15 +54,15 @@ SinglyList.prototype.searchNodeAt = function(position) {
 
 SinglyList.prototype.remove = function(position) {
     var currentNode = this.head,
-        length = this._length,
-        count = 1,
-        message = {failure: 'Failure: non-existent node in this list.'},
-        beforeNodeToDelete = null,
-        nodeToDelete = null,
-        deletedNode = null;
+    var length = this._length,
+    var count = 1,
+    var message = {failure: 'Failure: non-existent node in this list.'},
+    var beforeNodeToDelete = null,
+    var nodeToDelete = null,
+    var deletedNode = null;
 
     // 1st use-case: an invalid position
-    if (position < 0 || position > length) {
+    if (position < 1 || position > length) {
         throw new Error(message.failure);
     }
 

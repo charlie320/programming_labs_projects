@@ -32,6 +32,7 @@ before_action :auth, only: [:edit, :update, :destroy]
   end
 
   def update
+    p("Inside the events controller update method")
     event = Event.update(params[:id], event_params)
     event.user = current_user
     if event.valid?

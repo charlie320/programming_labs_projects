@@ -45,33 +45,33 @@
 
   <div class="add_event">
     <h3>Add Event</h3>
-    <table class="table table-bordered table-striped table-hover">
       <form class="add_event" action='events' method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <tr>
-          <td><label for="">Name:</label></td>
-          <td><input type="text" name="new_event[name]" id="name" value=""></td>
-        </tr>
-        <tr>
-          <td><label for="">Date:</label></td>
-          <td><input type="date" name="new_event[date]" id="date" value=""></td>
-        </tr>
-        <tr>
-          <td><label for="">Location:</label></td>
-          <td><input type="text" name="new_event[city]" id="city"></td>
-          <td>
-            <select class="" name="new_event[state]">
-              <% IO.foreach('states.txt') do |line| %>
-                <option value="<%= line.strip %>"><%=line%></option>
-              <% end %>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><input type="submit" name="add_event" value="Add Event"></td>
-        </tr>
+        <table class="table table-bordered table-striped table-hover">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <tr>
+            <td><label for="">Name:</label></td>
+            <td><input type="text" name="new_event[name]" id="name" value=""></td>
+          </tr>
+          <tr>
+            <td><label for="">Date:</label></td>
+            <td><input type="date" name="new_event[date]" id="date" value=""></td>
+          </tr>
+          <tr>
+            <td><label for="">Location:</label></td>
+            <td><input type="text" name="new_event[city]" id="city"></td>
+            <td>
+              <select class="" name="new_event[state]">
+                <% IO.foreach('states.txt') do |line| %>
+                  <option value="<%= line.strip %>"><%=line%></option>
+                <% end %>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="submit" name="add_event" value="Add Event"></td>
+          </tr>
+        </table>
       </form>
-    </table>
   </div>
 <% end %>
 

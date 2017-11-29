@@ -29,6 +29,7 @@ before_action :auth, only: [:edit, :update, :destroy]
     @event_count = @event.users.count  # Event.count
     @attenders = @event.users
     @comments = Comment.where(event_id: @event.id).eager_load(:user)
+    render layout: "three_column"    
   end
 
   def edit

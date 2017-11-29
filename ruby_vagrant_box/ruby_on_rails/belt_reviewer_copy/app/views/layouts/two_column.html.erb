@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TwoColumnLayout</title>
+    <title>Event Calendar</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <!-- Latest compiled and minified CSS -->
@@ -14,17 +14,16 @@
   </head>
   <body>
 
-    <% if @user %>
-      <form action="/sessions/<%=current_user.id%>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Log Out">
-      </form>
-    <% end %>
-
     <div class="container">
       <div class="row">
         <div class="col-md-6">
+          <% if @user %>
+            <form id="logout_events" action="/sessions/<%=current_user.id%>" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Log Out">
+            </form>
+          <% end %>
           <%= yield :left_column %>
         </div>
         <div class="col-md-6">

@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+#logout_events {
+   float:right;
+   margin-top: 15px;
+   margin-bottom: 20px;
+}

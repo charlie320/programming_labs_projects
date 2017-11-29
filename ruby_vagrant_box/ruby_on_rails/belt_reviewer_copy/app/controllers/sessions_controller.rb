@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   before_action :require_login, only: [:destroy]
 
   def index
+    render layout: "two_column"  
   end
 
   def create

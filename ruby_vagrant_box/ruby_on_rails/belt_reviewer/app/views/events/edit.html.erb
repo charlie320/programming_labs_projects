@@ -2,10 +2,11 @@
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
-<table>
+
   <form class="edit_event" action='/events/<%= @event.id %>' method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="patch">
+    <table>
     <tr>
       <td><label for="">Name:</label></td>
       <td><input type="text" name="new_event[name]" id="name" value="<%= @event.name %>"></td>
@@ -30,5 +31,5 @@
     <tr>
       <td><a href="/events">Back to Dashboard</a></td>
     </tr>
+    </table>
   </form>
-</table>

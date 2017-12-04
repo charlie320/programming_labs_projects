@@ -111,6 +111,11 @@ SinglyList.prototype.contains = function(val) {
 
 SinglyList.prototype.max = function() {
   var currentNode = this.head;
+
+  if (currentNode == null) {
+    return this;
+  }
+
   var max;
   if (currentNode.next == null) {
     return currentNode.val;

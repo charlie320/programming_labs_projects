@@ -9,7 +9,7 @@ function SinglyList() {
 }
 
 SinglyList.prototype.add = function(value) {
-    var node = new Node(value),
+    var node = new Node(value);
     var currentNode = this.head;
 
     // 1st use-case: an empty list
@@ -53,12 +53,12 @@ SinglyList.prototype.searchNodeAt = function(position) {
 };
 
 SinglyList.prototype.remove = function(position) {
-    var currentNode = this.head,
-    var length = this._length,
-    var count = 1,
-    var message = {failure: 'Failure: non-existent node in this list.'},
-    var beforeNodeToDelete = null,
-    var nodeToDelete = null,
+    var currentNode = this.head;
+    var length = this._length;
+    var count = 1;
+    var message = {failure: 'Failure: non-existent node in this list.'};
+    var beforeNodeToDelete = null;
+    var nodeToDelete = null;
     var deletedNode = null;
 
     // 1st use-case: an invalid position
@@ -126,7 +126,13 @@ SinglyList.prototype.max = function() {
 }
 
 SinglyList.prototype.min = function() {
-  var currentNode = this.head;
+  var currentNode = new Node();
+  currentNode = this.head;
+
+  if (currentNode == null) {
+    return this;
+  }
+
   var min;
   if (currentNode.next == null) {
     return currentNode.val;
@@ -142,13 +148,13 @@ SinglyList.prototype.min = function() {
 }
 
 var myList = new SinglyList();
-myList.add(12);
+
 myList.add(24);
 myList.add(55);
+myList.add(12);
 myList.add(34);
 myList.add(20);
 myList.add(75);
-
 
 // var myEmptyList = new SinglyList();
 // var mySingleList = new SinglyList();
@@ -183,8 +189,29 @@ function printList(myList) {
   return myList;
 }
 
+function minToFront(myList) {
+  var min = myList.min();
+  var currentNode = myList.head;
+
+  if (currentNode == null || currentNode.val == min) {
+    return myList
+  }
+
+  while (currentNode.next) {
+    if (currentNode.next.val == min) {
+      var minNode = currentNode.next;  // minNode = 12
+      currentNode.next = currentNode.next.next;  //  34 points to 20
+      minNode.next = myList.head;  // 12 points to 24
+      myList.head = minNode;  //  myList.head points to 12
+      return myList;
+    }
+    currentNode = currentNode.next;
+  }
+  return myList;
+}
+
 printList(myList);
 console.log();
-myList.remove(4);
+minToFront(myList);
 console.log();
 printList(myList);

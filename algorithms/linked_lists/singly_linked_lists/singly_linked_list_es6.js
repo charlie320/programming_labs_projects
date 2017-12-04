@@ -118,41 +118,73 @@ class SinglyList {
 
   max() {
     let currentNode = this.head;
-    let max = currentNode.val;
-    currentNode = currentNode.next;
-
-    while (currentNode) {
-      if (currentNode.val > max) {
-        max = currentNode.val;
-      }
+    if (currentNode != null) {
+      let max = currentNode.val;
       currentNode = currentNode.next;
+
+      while (currentNode) {
+        if (currentNode.val > max) {
+          max = currentNode.val;
+        }
+        currentNode = currentNode.next;
+      }
+      return max;
     }
-    return max;
   }
 
   min() {
     let currentNode = this.head;
-    let min = currentNode.val;
-    currentNode = currentNode.next;
-
-    while (currentNode) {
-      if (currentNode.val < min) {
-        min = currentNode.val;
-      }
+    if (currentNode != null) {
+      let min = currentNode.val;
       currentNode = currentNode.next;
-    }
+
+      while (currentNode) {
+        if (currentNode.val < min) {
+          min = currentNode.val;
+        }
+        currentNode = currentNode.next;
+      }
     return min;
+    }
   }
 } // End of SinglyList class
 
 var myNode = new Node(12);
 var myList = new SinglyList();
-myList.add(12);
+
 myList.add(24);
 myList.add(55);
 myList.add(34);
+myList.add(12);
 myList.add(20);
 myList.add(75);
 
-console.log(myList.max());
-console.log(myList.min());
+function minToFront(myList) {
+  var min = myList.min();
+  var currentNode = myList.head;
+
+  if (currentNode == null || currentNode.val == min) {
+    return myList
+  }
+
+  while (currentNode.next) {
+    if (currentNode.next.val == min) {
+      var minNode = currentNode.next;  // minNode = 12
+      currentNode.next = currentNode.next.next;  //  34 links to 20
+      minNode.next = myList.head;  // 12 points to 24
+      myList.head = minNode;  //  myList.head = 12
+      return myList;
+    }
+    currentNode = currentNode.next;
+  }
+  return myList;
+}
+
+// console.log(myList.max());
+// console.log(myList.min());
+
+myList.printList();
+console.log();
+minToFront(myList);
+console.log();
+myList.printList();

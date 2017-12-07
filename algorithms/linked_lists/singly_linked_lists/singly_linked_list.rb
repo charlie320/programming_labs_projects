@@ -153,12 +153,35 @@ class SinglyList
 end # end of SinglyList class
 
 myList = SinglyList.new()
-myList.add(12)
 myList.add(24)
 myList.add(55)
 myList.add(34)
+myList.add(12)
 myList.add(20)
 myList.add(75)
 
-p(myList.max())
-p(myList.min())
+def minToFront(myList)
+  min = myList.min()
+  currentNode = myList.head
+
+  if currentNode == nil or currentNode.val == min
+    return myList
+  end
+
+  while currentNode.next # as long as there is another node
+    if currentNode.next.val == min # if currentNode.next.val = 12
+      minNode = currentNode.next # minNode = 12
+      currentNode.next = currentNode.next.next # currentNode.next is now = 20.  34 is now linked to 20.
+      minNode.next = myList.head # 12.next is linked to 24
+      myList.head = minNode # 12 is now the head
+      return myList
+    end
+  currentNode = currentNode.next
+  end
+
+  return myList
+end
+
+p myList.printList()
+minToFront(myList)
+p myList.printList()

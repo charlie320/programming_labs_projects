@@ -142,15 +142,34 @@ class SinglyList(object):
 # end of SinglyList class
 
 myList = SinglyList()
-myList.add(12)
 myList.add(24)
 myList.add(55)
 myList.add(34)
+myList.add(12)
 myList.add(20)
 myList.add(75)
 
+def minToFront(myList):
+    min = myList.min()
+    currentNode = myList.head
+
+    if currentNode == None or currentNode.val == min:
+        return myList
+
+    while currentNode.next:
+        if currentNode.next.val == min:
+            minNode = currentNode.next
+            currentNode.next = currentNode.next.next
+            minNode.next = myList.head
+            myList.head = minNode
+            return myList
+
+        currentNode = currentNode.next
+
+    return myList
 
 # print "Max = {}".format(myList.max())
 # print "Min = {}".format(myList.min())
-
-print myList.contains(13)
+print myList.printList()
+minToFront(myList)
+print myList.printList()

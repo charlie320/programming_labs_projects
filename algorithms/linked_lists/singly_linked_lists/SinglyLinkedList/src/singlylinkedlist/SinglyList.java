@@ -12,9 +12,9 @@ import java.util.HashMap;
  * @author Charlie
  */
 public class SinglyList {
-    public Node head;
-    public Node node;
-    public int _length = 0;
+    private Node head;
+    private Node node;
+    private int _length = 0;
 
     // We will use no-argument constructor for all instances
 

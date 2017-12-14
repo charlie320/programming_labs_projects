@@ -1,9 +1,7 @@
 function insertion_sort_2(arr) {
   var l = arr.length;
   var temp;
-  var idx;
   var k;
-  var keepgoing;
 
   for(i = 1; i < l; i++) {
     temp = arr[i];

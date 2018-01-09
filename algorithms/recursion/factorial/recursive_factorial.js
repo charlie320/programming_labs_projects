@@ -12,4 +12,4 @@ console.log(r_factorial(3));
 console.log(r_factorial(1));
 console.log(r_factorial(0));
 console.log(r_factorial(2));
-console.log(r_factorial(6));
+console.log(r_factorial(5));

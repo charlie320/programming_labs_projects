@@ -33,4 +33,4 @@ function r_binary_search(arr, num) {
 
 var myArr = [1,3,5,7,8,10,12,22,30,36,37,41,43,46,47,50,51,52,59,60,61,67,73,77,80];
 // var myArr = [5,6];
-console.log(r_binary_search(myArr,13));
+console.log(r_binary_search(myArr,30));

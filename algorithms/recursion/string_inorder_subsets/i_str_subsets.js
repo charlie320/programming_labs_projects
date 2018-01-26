@@ -1,23 +1,25 @@
 function i_str_subsets(str) {
   var tempArr = [];
+  var singlesArr = [];
   var tempStr = str;
   var strLen = str.length - 1;
 
   tempArr.push(str);
 
   for (let i = 0; i < str.length; i++) {
-    tempStr = str.slice(i);
-    for (let j = 0; j < )
+    tempArr.push(str[i]);
+    singlesArr.push(str[i]);
   }
+
 
   return tempArr;
 }
 
 // var myStr2 = "ab";
 // var myStr = "abc";
-var myStr4 = "abcd";
-// var myStr5 = "abcde";
+// var myStr4 = "abcd";
+var myStr5 = "abcde";
 // var myStrX = "abcdefghi";
 
 
-console.log(i_str_subsets(myStr4));
+console.log(i_str_subsets(myStr5));

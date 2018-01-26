@@ -22,7 +22,6 @@ function bubbleSort(arr) {
   return arr;
 }
 
-
 var arr = [6,3,5,4,8,2,9,1,14,23,12,17];
 // var arr = [23,17,14,12,9,8,6,5,4,3,2,1];
 // var arr = [3,2,1];
